@@ -23,7 +23,7 @@ public class Main{
 		f.setVisible(true);
 	}
 	public void start() {
-		game.start();
+		game.run();
 		
 	}
 	public static void main(String[]args) {

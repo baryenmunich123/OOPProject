@@ -5,10 +5,10 @@ public class Camera {
 	private float y;
 	private float width;
 	private float height;
-	private gameWorldState gameWorld;
-	private boolean fixed = 0;
+	private GameWorldState gameWorld;
+	private boolean fixed = false;
 	
-	public Camera (float x, float y, float width, float height, gameWorldState gameWorld) {
+	public Camera (float x, float y, float width, float height, GameWorldState gameWorld) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -23,16 +23,16 @@ public class Camera {
 	}
 	public void Update() {
 		if (this.fixed == false) {
-			Megaman megaman = getGameWorld.megaman; //get Megaman from the current stage
+			Megaman megaman = gameWorld.megaman; //get Megaman from the current stage
 			if (megaman.getX() - this.x >= 500 /*starting position of camera movement*/) {
-				setX(megaman.getX() - 500);
+				setX(megaman.get_X() - 500);
 			}
 			if (megaman.getY() - this.y > 400) /*starting position of camera movement*/{
-				setY(megaman.getY() - 400);
+				setY(megaman.get_Y() - 400);
 			}
 			else {
 				if(megaman.getY() - this.y < 250) /*The domain [250, 400] is the range where camera don't move*/ {
-					setY(megaman.getY() - 250);
+					setY(megaman.get_Y() - 250);
 				}
 			}
 		}

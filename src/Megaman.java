@@ -1,9 +1,22 @@
 package src;
 import acm.graphics.*;
+
+
 import acm.util.*;
+
+import java.awt.Graphics2D;
 import java.util.*;
+import javax.swing.*;
 
 public class Megaman extends GCompound {
+	private float x;
+	private float y;
+	private int speedX;
+	private int speedY;
+	private int state;
+	
+	private GameWorldState gameWorld;
+	
 	private GImage StandRight;
 	private GImage StandLeft;
 	private GImage RunRight1;
@@ -33,12 +46,18 @@ public class Megaman extends GCompound {
 	private GRectangle DownRect;
 	private GRectangle BodyRect;
 	
-	private int Direction;
+	private int Direction = 2; //1 is Left, 2 is Right
 	private int HP = 20;
-	private int Falling;
-	private int DamageTimer = 24;
+	private int Falling = 0;
+	private int Shooting = 0;
+	private long ShootTimer;
+	private long StartDamageTimer;
+	private long EndDamageTimer;
 	
-	public Megaman() {
+	public Megaman(float x, float y, GameWorldState gameWorld) {
+		this.x = x;
+		this.y = y;
+		this.gameWorld = gameWorld;
 		StandRight = new GImage(MediaTools.loadImage("Image/con1.png"), 0, 0);
 		StandLeft = new GImage(MediaTools.loadImage("Image/con1_reverse.png"), 0, 0);
 		RunRight1 = new GImage(MediaTools.loadImage("Image/con4.png"), 0, 0);
@@ -62,13 +81,13 @@ public class Megaman extends GCompound {
 		DamageRight = new GImage(MediaTools.loadImage("Image/hit1.png"), 0, 0);
 		DamageLeft = new GImage(MediaTools.loadImage("Image/hit1_reverse.png"), 0, 0);
 		
-		LeftRect = new GRectangle(StandRight.getX(), StandRight.getY() + 1, 3, StandRight.getHeight() - 5);
-		RightRect = new GRectangle(StandRight.getX() + StandRight.getWidth() - 3, StandRight.getY(), 3, StandRight.getHeight() - 5);
-		UpRect = new GRectangle(StandRight.getX() + 1, StandRight.getY() - 1, StandRight.getWidth() - 2, 3);
-		DownRect = new GRectangle(StandRight.getX() + 1, StandRight.getY() + StandRight.getHeight() - 3, StandRight.getWidth() - 2, 3);
-		BodyRect = new GRectangle(StandRight.getBounds());
+		LeftRect = new GRectangle(this.x, this.y + 1, 3, StandRight.getHeight() - 5);
+		RightRect = new GRectangle(this.x + StandRight.getWidth() - 3, this.y, 3, StandRight.getHeight() - 5);
+		UpRect = new GRectangle(this.x + 1, this.y - 1, StandRight.getWidth() - 2, 3);
+		DownRect = new GRectangle(this.x + 1, this.y + StandRight.getHeight() - 3, StandRight.getWidth() - 2, 3);
+		BodyRect = new GRectangle(this.x, this.y, StandRight.getWidth(), StandRight.getHeight());
 		
-		add(StandRight);
+		/*add(StandRight);
 		add(StandLeft);
 		add(RunRight1);
 		add(RunRight2);
@@ -89,16 +108,16 @@ public class Megaman extends GCompound {
 		add(JumpShootRight);
 		add(JumpShootLeft);
 		add(DamageRight);
-		add(DamageLeft);
+		add(DamageLeft);*/
 	}
 	
-	public void Control(int move, int Direction, int Jump, int Falling, int Damage) {
-		this.Direction = Direction;
+	//public /*void*/ GImage Control(int move, int Direction, int Jump, int Falling, int Damage) {
+		/*this.Direction = Direction;
 		if (this.HP <= 0) {
 			Die();
 		}
 		if (move == 6 && Damage == 0 && Jump == 0) {
-			this.Direction = 2;
+			/*this.Direction = 2;
 			StandRight.setVisible(false);
 			StandLeft.setVisible(false);
 			RunLeft1.setVisible(false);
@@ -129,10 +148,11 @@ public class Megaman extends GCompound {
 			RunRight3.setVisible(false);
 			RunRight2.setVisible(true);
 			move(1/4, 0);
-			RunRight2.setVisible(false);
+			RunRight2.setVisible(false);*/
+			/*return RunRight1;
 		}
 		if (move == 4 && Damage == 0 && Jump == 0) {
-			this.Direction = 1;
+			/*this.Direction = 1;
 			StandRight.setVisible(false);
 			StandLeft.setVisible(false);
 			RunRight1.setVisible(false);
@@ -163,11 +183,12 @@ public class Megaman extends GCompound {
 			RunLeft3.setVisible(false);
 			RunLeft2.setVisible(true);
 			move(1/4, 0);
-			RunLeft2.setVisible(false);
+			RunLeft2.setVisible(false);*/
+			/*return RunLeft1;
 		}
 		if (move == 0 && Damage == 0 && Jump == 0) {
 			if (this.Direction == 2) {
-				StandRight.setVisible(true);
+				/*StandRight.setVisible(true);
 				StandLeft.setVisible(false);
 				RunRight1.setVisible(false);
 				RunRight2.setVisible(false);
@@ -188,10 +209,11 @@ public class Megaman extends GCompound {
 				JumpShootRight.setVisible(false);
 				JumpShootLeft.setVisible(false);
 				DamageRight.setVisible(false);
-				DamageLeft.setVisible(false);
+				DamageLeft.setVisible(false);*/
+				/*return StandRight;
 			}
 			if (this.Direction == 1) {
-				StandRight.setVisible(false);
+				/*StandRight.setVisible(false);
 				StandLeft.setVisible(true);
 				RunRight1.setVisible(false);
 				RunRight2.setVisible(false);
@@ -212,11 +234,172 @@ public class Megaman extends GCompound {
 				JumpShootRight.setVisible(false);
 				JumpShootLeft.setVisible(false);
 				DamageRight.setVisible(false);
-				DamageLeft.setVisible(false);
+				DamageLeft.setVisible(false);*/
+				/*return StandLeft;
 			}
+		}
+		return StandRight;
+		
+	}*/
+	public void run() {
+		if(Direction == 1) {
+			this.speedX = -3;
+		}
+		else {
+			this.speedX = 3;
+		}
+	}
+	public void jump() {
+		if (Falling == 0) {
+			Falling = 1;
+			this.speedY = -5;
+		}
+	}
+	public void shoot() {
+		if (Shooting == 0) {
+			Shooting = 1;
+			Bullet_Megaman bullet = new Bullet_Megaman(this.x, this.y + (float)(StandRight.getHeight()/4), gameWorld);
+			if (Direction == 1) {
+				bullet.setSpeedX(-2);
+			}
+			else {
+				bullet.setX(this.x + (float)StandRight.getWidth());
+				bullet.setSpeedX(2);
+			}
+			ShootTimer = System.currentTimeMillis();
 		}
 	}
 	public void Die() {
 		
+	}
+	public void draw(Graphics2D g2) {
+		switch(state) {
+		case 0:
+		case 4:
+			if (Falling == 1) {
+				if (Direction == 1) {
+					if(Shooting == 0) {
+						g2.drawImage(JumpLeft.getImage(), (int)x, (int)y, null);
+					}
+					else {
+						g2.drawImage(JumpShootLeft.getImage(), (int)x, (int)y, null);
+					}
+				}
+				else {
+					if (Shooting == 0) {
+						g2.drawImage(JumpRight.getImage(), (int)x, (int)y, null);
+					}
+					else {
+						g2.drawImage(JumpShootRight.getImage(), (int)x, (int)y, null);
+					}
+				}
+			}
+			else {
+				if (speedX > 0) {
+					if (Direction == 2) {
+						if (Shooting == 0) {
+							g2.drawImage(RunRight1.getImage(), (int)x, (int)y, null);
+							g2.dispose();
+							g2.drawImage(RunRight2.getImage(), (int)x+1, (int)y, null);
+							g2.dispose();
+							g2.drawImage(RunRight3.getImage(), (int)x+2, (int)y, null);
+							g2.dispose();
+						}
+						else {
+							g2.drawImage(RunShootRight1.getImage(), (int)x, (int)y, null);
+							g2.dispose();
+							g2.drawImage(RunShootRight2.getImage(), (int)x+1, (int)y, null);
+							g2.dispose();
+							g2.drawImage(RunShootRight3.getImage(), (int)x+2, (int)y, null);
+							g2.dispose();
+						}
+					}
+					else {
+						if (Shooting == 0) {
+							g2.drawImage(RunLeft1.getImage(), (int)x, (int)y, null);
+							g2.dispose();
+							g2.drawImage(RunLeft2.getImage(), (int)x-1, (int)y, null);
+							g2.dispose();
+							g2.drawImage(RunLeft3.getImage(), (int)x-2, (int)y, null);
+							g2.dispose();
+						}
+						else {
+							g2.drawImage(RunShootLeft1.getImage(), (int)x, (int)y, null);
+							g2.dispose();
+							g2.drawImage(RunShootLeft2.getImage(), (int)x-1, (int)y, null);
+							g2.dispose();
+							g2.drawImage(RunShootLeft3.getImage(), (int)x-2, (int)y, null);
+							g2.dispose();
+						}
+					}
+				}
+				else {
+					if(Direction == 1) {
+						if (Shooting == 0) {
+							g2.drawImage(StandLeft.getImage(), (int)x, (int)y, null);
+						}
+						else {
+							g2.drawImage(ShootLeft.getImage(), (int)x, (int)y, null);
+						}
+					}
+					else {
+						if (Shooting == 0) {
+							g2.drawImage(StandRight.getImage(), (int)x, (int)y, null);
+						}
+						else {
+							g2.drawImage(ShootRight.getImage(), (int)x, (int)y, null);
+						}
+					}
+				}
+			}
+			break;
+		case 1:
+			if (Direction == 1) {
+				g2.drawImage(DamageLeft.getImage(), (int)x, (int)y, null);
+				g2.dispose();
+				g2.drawImage(DamageLeft.getImage(), (int)x+1, (int)y, null);
+				g2.dispose();
+				g2.drawImage(DamageLeft.getImage(), (int)x+2, (int)y, null);
+			}
+			else {
+				g2.drawImage(DamageRight.getImage(), (int)x, (int)y, null);
+				g2.dispose();
+				g2.drawImage(DamageRight.getImage(), (int)x-1, (int)y, null);
+				g2.dispose();
+				g2.drawImage(DamageRight.getImage(), (int)x-2, (int)y, null);
+			}
+			break;
+		}
+			
+	}
+	public void Update() {
+		
+	}
+	//public GImage getStandRight() {
+		//return StandRight;
+	//}
+	public float get_X() {
+		return x;
+	}
+	public void set_X(float x) {
+		this.x = x;
+	}
+	public float get_Y() {
+		return y;
+	}
+	public void set_Y(float y) {
+		this.y = y;
+	}
+	public void setDirection(int Direction) {
+		this.Direction = Direction;
+	}
+	public int getDirection() {
+		return Direction;
+	}
+	public void setState(int state) {
+		this.state = state;
+	}
+	public int getState() {
+		return state;
 	}
 }

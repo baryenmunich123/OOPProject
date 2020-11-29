@@ -1,0 +1,55 @@
+package src;
+
+import java.awt.*;
+import javax.swing.*;
+import java.util.*;
+
+public class Bullet_Megaman {
+	private float x;
+	private float y;
+	private int speedX = 1;
+	private int damage = 1;
+	private int state = 1;
+	private GameWorldState gameWorld;
+	public float getX() {
+		return x;
+	}
+	public void setX(float x) {
+		this.x = x;
+	}
+	public float getY() {
+		return y;
+	}
+	public void setY(float y) {
+		this.y = y;
+	}
+	public void setSpeedX(int speedX) {
+		this.speedX = speedX;
+	}
+	public Bullet_Megaman(float x, float y, GameWorldState gameWorld) {
+		this.x = x;
+		this.y = y;
+		this.gameWorld = gameWorld;
+	}
+	public Rectangle bound() {
+		Rectangle rect = new Rectangle((int)x, (int)y, 20, 20);
+		return rect;
+	}
+	public void draw(Graphics2D g2) {
+		g2.drawOval((int)x, (int)y, 20, 20);
+	}
+	public void Update() {
+		x = x + speedX;
+		Enemy object = gameWorld.EnemyManager.getCollisionBullet(this);
+		if (object != null && object.getState() == 1) {
+			object.setHP(object.getHP() - damage);
+			state = 0;
+		}
+	}
+	public int getState() {
+		return state;
+	}
+	public void setState(int state) {
+		this.state = state;
+	}
+}

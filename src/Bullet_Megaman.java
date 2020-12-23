@@ -39,6 +39,14 @@ public class Bullet_Megaman {
 	public void draw(Graphics2D g2) {
 		g2.drawOval((int)x, (int)y, 20, 20);
 	}
+	public boolean OutOfView() {
+		if (x - gameWorld.Camera.getX() > (gameWorld.Camera.getWidth() + 10) || (x - 20) < gameWorld.Camera.getX() || y - gameWorld.Camera.getY() > (gameWorld.Camera.getHeight() + 10) || (y - 20) < gameWorld.Camera.getY()) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 	public void Update() {
 		switch(state) {
 		case 1:

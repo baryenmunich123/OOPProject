@@ -27,6 +27,7 @@ public class Bullet_Megaman {
 		this.speedX = speedX;
 	}
 	public Bullet_Megaman(float x, float y, GameWorldState gameWorld) {
+		this.state = 1;
 		this.x = x;
 		this.y = y;
 		this.gameWorld = gameWorld;
@@ -39,11 +40,16 @@ public class Bullet_Megaman {
 		g2.drawOval((int)x, (int)y, 20, 20);
 	}
 	public void Update() {
-		x = x + speedX;
-		Enemy object = gameWorld.EnemyManager.getCollisionBullet(this);
-		if (object != null && object.getState() == 1) {
-			object.setHP(object.getHP() - damage);
-			state = 0;
+		switch(state) {
+		case 1:
+			x = x + speedX;
+			Enemy object = gameWorld.EnemyManager.getCollisionBullet(this);
+			if (object != null && object.getState() == 1 /*Alive*/) {
+				object.setHP(object.getHP() - damage);
+				state = 2;
+			}
+		case 2:
+			break;
 		}
 	}
 	public int getState() {

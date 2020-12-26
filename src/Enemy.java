@@ -106,13 +106,13 @@ public abstract class Enemy {
 
     public abstract void Attack();
 
-    public Rectangle getBoundCollisionWithMap() {
-        Rectangle bound = new Rectangle();
-        bound.x = (int) (getStartX() - getWidth() / 2);
-        bound.y = (int) (getStartY() - getHeight() / 2);
-        bound.width = (int) getWidth();
-        bound.height = (int) getHeight();
-    }
+    // public Rectangle getBoundCollisionWithMap() {
+    // Rectangle bound = new Rectangle();
+    // bound.x = (int) (getStartX() - getWidth() / 2);
+    // bound.y = (int) (getStartY() - getHeight() / 2);
+    // bound.width = (int) getWidth();
+    // bound.height = (int) getHeight();
+    // }
 
     public void damaged(int megamanBullet) {
         this.HP = HP - megamanBullet;

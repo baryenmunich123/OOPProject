@@ -9,6 +9,9 @@ public class Bullet_Megaman_Manager {
 	public Bullet_Megaman_Manager(GameWorldState gameWorld) {
 		this.gameWorld = gameWorld;
 	}
+	public void add(Bullet_Megaman object) {
+		bullet.add(object);
+	}
 	public void Update() {
 		synchronized(bullet) {
 			for (int i = 0; i < bullet.size(); i++) {

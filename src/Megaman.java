@@ -263,6 +263,7 @@ public class Megaman extends GCompound {
 		if (Shooting == 0) {
 			Shooting = 1;
 			Bullet_Megaman bullet = new Bullet_Megaman(this.x, this.y + (float)(StandRight.getHeight()/4), gameWorld);
+			gameWorld.Bullet_Megaman_Manager.add(bullet);
 			if (Direction == 1) {
 				bullet.setSpeedX(-2);
 			}

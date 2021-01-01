@@ -12,6 +12,10 @@ import java.awt.event.KeyEvent;
 
 public class Main{
 	GamePanel game;
+
+	public static final int SCREEN_WIDTH = 1000;
+	public static final int SCREEN_HEIGHT = 600;
+
 	public Main() {
 		JFrame f = new JFrame("Megaman 1");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

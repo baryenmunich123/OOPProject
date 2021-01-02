@@ -414,21 +414,21 @@ public class Megaman extends GCompound {
 		if (state == 1 || state == 0) {
 			if (Falling == 0) {
 				set_X(x + speedX);
-				if (Direction == 1 && gameWorld.physicalMap.collisionWithLeftWall(this.getBodyRect()) != null) {
-					Rectangle r1 = gameWorld.physicalMap.collisionWithLeftWall(this.getBodyRect());
+				if (Direction == 1 && gameWorld.PhysicalMap.haveCollisionWithLeftWall(this.getBodyRect()) != null) {
+					Rectangle r1 = gameWorld.PhysicalMap.collisionWithLeftWall(this.getBodyRect());
 					set_X((float)r1.getX() + (float)r1.getWidth());
 				}
-				if (Direction == 1 && gameWorld.physicalMap.collisionWithRightWall(this.getBodyRect()) != null) {
-					Rectangle r2 = gameWorld.physicalMap.collisionWithLeftWall(this.getBodyRect());
+				if (Direction == 1 && gameWorld.PhysicalMap.haveCollisionWithRightWall(this.getBodyRect()) != null) {
+					Rectangle r2 = gameWorld.PhysicalMap.collisionWithLeftWall(this.getBodyRect());
 					set_X((float)r2.getX() - (float)BodyRect.getWidth());
 				}
-				if (gameWorld.physicalMap.collisionWithTop(getUpRect())) {
-					Rectangle r3 = gameWorld.physicalMap.collisionWithTop(getUpRect());
+				if (gameWorld.PhysicalMap.haveCollisionWithTop(getUpRect())) {
+					Rectangle r3 = gameWorld.PhysicalMap.haveCollisionWithTop(getUpRect());
 					speedY = 0;
-					set_Y((float)r3.getY() + gameWorld.physicalMap.getTileSize());
+					set_Y((float)r3.getY() + gameWorld.PhysicalMap.getTileSize());
 				}
-				if (gameWorld.physicalMap.collisionWithLand(getDownRect())) {
-					Rectangle r4 = gameWorld.physicalMap.collisionWithLand(getDownRect());
+				if (gameWorld.PhysicalMap.haveCollisionWithLand(getDownRect())) {
+					Rectangle r4 = gameWorld.PhysicalMap.haveCollisionWithLand(getDownRect());
 					Falling = 0;
 					speedY = 0;
 					set_Y((float)r4.getY() - (float)BodyRect.getHeight());

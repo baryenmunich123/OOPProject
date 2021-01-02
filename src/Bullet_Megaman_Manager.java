@@ -22,5 +22,14 @@ public class Bullet_Megaman_Manager {
 			}
 		}
 	}
+	public void draw(Graphics2D g2) {
+		synchronized(bullet) {
+			for(Bullet_Megaman object : bullet) {
+				if (!object.OutOfView()) {
+					object.draw(g2);
+				}
+			}
+		}
+	}
 	
 }

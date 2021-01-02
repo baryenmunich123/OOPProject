@@ -40,7 +40,7 @@ public class Bullet_Megaman {
 		g2.drawOval((int)x, (int)y, 20, 20);
 	}
 	public boolean OutOfView() {
-		if (x - gameWorld.Camera.getX() > (gameWorld.Camera.getWidth() + 10) || (x - 20) < gameWorld.Camera.getX() || y - gameWorld.Camera.getY() > (gameWorld.Camera.getHeight() + 10) || (y - 20) < gameWorld.Camera.getY()) {
+		if (x - gameWorld.camera.getX() > (gameWorld.camera.getWidth() + 10) || (x - 20) < gameWorld.camera.getX() || y - gameWorld.camera.getY() > (gameWorld.camera.getHeight() + 10) || (y - 20) < gameWorld.camera.getY()) {
 			return true;
 		}
 		else {
@@ -51,7 +51,7 @@ public class Bullet_Megaman {
 		switch(state) {
 		case 1:
 			x = x + speedX;
-			Enemy object = gameWorld.EnemyManager.getCollisionBullet(this);
+			Enemy object = gameWorld.Enemy_Manager.getCollisionBullet(this);
 			if (object != null && object.getState() == 1 /*Alive*/) {
 				object.setHP(object.getHP() - damage);
 				state = 2;

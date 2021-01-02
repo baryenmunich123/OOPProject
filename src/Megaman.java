@@ -380,7 +380,7 @@ public class Megaman extends GCompound {
 	public void Update() {
 		switch (state) {
 		case 0: //Alive
-			Enemy object = gameWorld.EnemyManager.getCollisionMegaman(this);
+			Enemy object = gameWorld.Enemy_Manager.getCollisionMegaman(this);
 			if (object != null) {
 				if (object.getDamage() != 0) {
 					//HP = HP - object.getDamage();
@@ -389,7 +389,7 @@ public class Megaman extends GCompound {
 			}
 			break;
 		case 1: //Damaged
-			Enemy object1 = gameWorld.EnemyManager.getCollisionMegaman(this);
+			Enemy object1 = gameWorld.Enemy_Manager.getCollisionMegaman(this);
 			if (System.currentTimeMillis() - StartDamageTimer > 80) {
 				StartDamageTimer = System.currentTimeMillis();
 				HP = HP - object1.getDamage();
@@ -414,21 +414,21 @@ public class Megaman extends GCompound {
 		if (state == 1 || state == 0) {
 			if (Falling == 0) {
 				set_X(x + speedX);
-				if (Direction == 1 && gameWorld.PhysicalMap.haveCollisionWithLeftWall(this.getBodyRect()) != null) {
-					Rectangle r1 = gameWorld.PhysicalMap.collisionWithLeftWall(this.getBodyRect());
+				if (Direction == 1 && gameWorld.physicalMap.haveCollisionWithLeftWall(this.getBodyRect()) != null) {
+					Rectangle r1 = gameWorld.physicalMap.haveCollisionWithLeftWall(this.getBodyRect());
 					set_X((float)r1.getX() + (float)r1.getWidth());
 				}
-				if (Direction == 1 && gameWorld.PhysicalMap.haveCollisionWithRightWall(this.getBodyRect()) != null) {
-					Rectangle r2 = gameWorld.PhysicalMap.collisionWithLeftWall(this.getBodyRect());
+				if (Direction == 1 && gameWorld.physicalMap.haveCollisionWithRightWall(this.getBodyRect()) != null) {
+					Rectangle r2 = gameWorld.physicalMap.haveCollisionWithLeftWall(this.getBodyRect());
 					set_X((float)r2.getX() - (float)BodyRect.getWidth());
 				}
-				if (gameWorld.PhysicalMap.haveCollisionWithTop(getUpRect())) {
-					Rectangle r3 = gameWorld.PhysicalMap.haveCollisionWithTop(getUpRect());
+				if (gameWorld.physicalMap.haveCollisionWithTop(getUpRect()) != null) {
+					Rectangle r3 = gameWorld.physicalMap.haveCollisionWithTop(getUpRect());
 					speedY = 0;
-					set_Y((float)r3.getY() + gameWorld.PhysicalMap.getTileSize());
+					set_Y((float)r3.getY() + gameWorld.physicalMap.getTileSize());
 				}
-				if (gameWorld.PhysicalMap.haveCollisionWithLand(getDownRect())) {
-					Rectangle r4 = gameWorld.PhysicalMap.haveCollisionWithLand(getDownRect());
+				if (gameWorld.physicalMap.haveCollisionWithLand(getDownRect()) != null) {
+					Rectangle r4 = gameWorld.physicalMap.haveCollisionWithLand(getDownRect());
 					Falling = 0;
 					speedY = 0;
 					set_Y((float)r4.getY() - (float)BodyRect.getHeight());
@@ -487,5 +487,11 @@ public class Megaman extends GCompound {
 		Rectangle up = UpRect.toRectangle();
 		up.setBounds((int)this.x + 1, (int)this.y - 1, (int)StandRight.getWidth() - 2, 3);
 		return up;
+	}
+	public int getHP() {
+		return HP;
+	}
+	public int getSpeedX() {
+		return speedX;
 	}
 }

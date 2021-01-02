@@ -61,7 +61,7 @@ public class Camera {
 	public void setHeight(float height) {
 		this.height = height;
 	}
-	public gameWorldState getGameWorld() {
+	public GameWorldState getGameWorld() {
 		return gameWorld;
 	}
 }

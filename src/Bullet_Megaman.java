@@ -66,4 +66,7 @@ public class Bullet_Megaman {
 	public void setState(int state) {
 		this.state = state;
 	}
+	public int getDamage() {
+		return damage;
+	}
 }

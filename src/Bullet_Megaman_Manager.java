@@ -20,7 +20,6 @@ public class Bullet_Megaman_Manager {
 					bullet.remove(i);
 				}
 			}
-			return null;
 		}
 	}
 	public Bullet_Megaman getCollisionEnemy(Enemy object) {
@@ -30,6 +29,7 @@ public class Bullet_Megaman_Manager {
 					return e;
 				}
 			}
+			return null;
 		}
 	}
 	public void draw(Graphics2D g2) {

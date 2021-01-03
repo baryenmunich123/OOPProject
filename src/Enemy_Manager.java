@@ -1,3 +1,5 @@
+package src;
+
 import java.awt.Graphics2D;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -39,7 +41,18 @@ public class Enemy_Manager {
         synchronized (listOfEnemies) {
             for (int i = 0; i < listOfEnemies.size(); i++) {
                 Enemy e = listOfEnemies.get(i);
-                if (man.getBoundForCollisionWithEnemy().intersects(e.getBoundForCollisionWithEnemy()))
+                if (man.getBodyRect().intersects(e.getBoundForCollisionWithEnemy()))
+                    return e;
+            }
+        }
+        return null;
+    }
+
+    public Enemy getCollisionBullet(Bullet_Megaman bullet) {
+        synchronized (listOfEnemies) {
+            for (int i = 0; i < listOfEnemies.size(); i++) {
+                Enemy e = listOfEnemies.get(i);
+                if (bullet.bound().intersects(e.getBoundForCollisionWithEnemy()))
                     return e;
             }
         }
@@ -50,7 +63,7 @@ public class Enemy_Manager {
         synchronized (listOfEnemies) {
             for (int i = 0; i < listOfEnemies.size(); i++) {
                 Enemy e = listOfEnemies.get(i);
-                if (!e.isVisible())
+                if (!e.checkVisible())
                     e.updateState();
                 if (e.getState() == 2) // 2 = DEATH
                     listOfEnemies.remove(i);
@@ -61,9 +74,13 @@ public class Enemy_Manager {
     public void draw(Graphics2D g2) {
         synchronized (listOfEnemies) {
             for (Enemy e : listOfEnemies) {
-                if (!e.isVisible())
+                if (!e.checkVisible())
                     e.draw(g2);
             }
         }
+    }
+
+    public int getSize() {
+        return listOfEnemies.size();
     }
 }

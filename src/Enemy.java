@@ -1,3 +1,5 @@
+package src;
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -155,10 +157,10 @@ public abstract class Enemy {
         }
     }
 
-    public boolean isVisible() {
-        if (this.startX - getGameWorld().camera.getX() > getGameWorld().camera.getWidthView()
+    public boolean checkVisible() {
+        if (this.startX - getGameWorld().camera.getX() > getGameWorld().camera.getWidth()
                 || this.startX - getGameWorld().camera.getX() < -50
-                || this.startY - getGameWorld().camera.getY() > getGameWorld().camera.getHeightView()
+                || this.startY - getGameWorld().camera.getY() > getGameWorld().camera.getHeight()
                 || this.startY - getGameWorld().camera.getY() < -50)
             return true;
         return false;

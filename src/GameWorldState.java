@@ -1,6 +1,7 @@
 package src;
 
 import java.awt.*;
+
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import javax.swing.*;
@@ -29,6 +30,7 @@ public class GameWorldState {
 		backgroundMap = new BackgroundMap(0, 0, this);
 		camera = new Camera(0, 0, Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT, this);
 		Bullet_Megaman_Manager = new Bullet_Megaman_Manager(this);
+		Enemy_Manager = new Enemy_Manager(this);
 		initializeEnemy();
 	}
 

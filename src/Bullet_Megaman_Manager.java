@@ -20,6 +20,16 @@ public class Bullet_Megaman_Manager {
 					bullet.remove(i);
 				}
 			}
+			return null;
+		}
+	}
+	public Bullet_Megaman getCollisionEnemy(Enemy object) {
+		synchronized(bullet) {
+			for (Bullet_Megaman e: bullet) {
+				if (e.bound().intersects(object.getBoundForCollisionWithEnemy())) {
+					return e;
+				}
+			}
 		}
 	}
 	public void draw(Graphics2D g2) {

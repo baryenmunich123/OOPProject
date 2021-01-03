@@ -138,14 +138,15 @@ public abstract class Enemy {
     public void damaged(int megamanBullet) {
         this.HP = HP - megamanBullet;
         state = 1;
-        // damagedUpdate();
+        damagedUpdate();
     }
 
     public void updateState() {
         switch (state) {
             case 0: // Alive
-                Megaman man = getGameWorld().megaman.getCollisionWithEnemy(this);
-                if (man.getDamage() > 0)
+                // Megaman man = getGameWorld().megaman.getCollisionWithEnemy(this);
+                Bullet_Megaman bullet = gameWorld.Bullet_Megaman_Manager.getCollisionEnemy(this);
+                if (bullet.getDamage() > 0)
                     state = 1;
                 break;
             case 1: // Damaged;
@@ -166,11 +167,13 @@ public abstract class Enemy {
         return false;
     }
 
-    // public void damagedUpdate(){};
+    public void damagedUpdate() {
+    };
 
     public abstract Rectangle getBoundForCollisionWithEnemy();
 
     public abstract void Attack();
 
     public abstract void draw(Graphics2D g2);
+
 }

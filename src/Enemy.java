@@ -1,6 +1,5 @@
 package src;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
@@ -18,22 +17,18 @@ public abstract class Enemy {
     private double startY;
     private double width;
     private double height;
-    private double mass;
-    private int HP;
+    private int HP = 5;
     private GameWorldState gameWorld;
 
     private int damage;
     private int state;
     // private int direction;
 
-    public Enemy(double startX, double startY, double width, double height, double mass, int HP,
-            GameWorldState gameWorld) {
+    public Enemy(double startX, double startY, double width, double height, GameWorldState gameWorld) {
         this.startX = startX;
         this.startY = startY;
         this.width = width;
         this.height = height;
-        this.mass = mass;
-        this.HP = HP;
         this.gameWorld = gameWorld;
         // direction = RIGHT_DIRECTION;
     }
@@ -52,10 +47,6 @@ public abstract class Enemy {
 
     public double getHeight() {
         return height;
-    }
-
-    public double getMass() {
-        return mass;
     }
 
     public int getHP() {
@@ -80,10 +71,6 @@ public abstract class Enemy {
 
     public void setHeight(double height) {
         this.height = height;
-    }
-
-    public void setMass(double mass) {
-        this.mass = mass;
     }
 
     public void setHP(int hP) {

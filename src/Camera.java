@@ -31,7 +31,7 @@ public class Camera {
 				setY(megaman.get_Y() - 400);
 			}
 			else {
-				if(megaman.getY() - this.y < 250) /*The domain [250, 400] is the range where camera don't move*/ {
+				if(megaman.get_Y() - this.y < 250) /*The domain [250, 400] is the range where camera don't move*/ {
 					setY(megaman.get_Y() - 250);
 				}
 			}

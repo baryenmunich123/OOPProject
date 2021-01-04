@@ -21,6 +21,12 @@ public class Main{
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Toolkit toolkit = f.getToolkit();
         Dimension screen = toolkit.getScreenSize();
+        try {
+        	CacheDataLoader.getInstance().LoadData();
+        }
+        catch (IOException ex) {
+        	ex.printStackTrace();;
+        }
 		f.setBounds(screen.width/2 - 500, screen.height/2 - 300, 1000, 600);
 		game = new GamePanel();
 		f.add(game);

@@ -6,22 +6,27 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import java.awt.*;
 
 public class StandingEnemy extends Enemy {
     private long startTimeToShoot = 0;
-    private BufferedImage image;
+    private Image image;
 
     public StandingEnemy(double startX, double startY, GameWorldState gameWorld) {
         super(startX, startY, 50, 50, gameWorld);
         // TODO Auto-generated constructor stub
         setDamage(10);
         setHP(30);
-        try {
-            image = ImageIO.read(getClass().getResourceAsStream("OOPProject\\Image\\Enemy1.png"));
-        } catch (IOException e) {
-            // TODO: handle exception
-            e.printStackTrace();
-        }
+        // try {
+        // image =
+        // ImageIO.read(getClass().getResourceAsStream("OOPProject\\Image\\Enemy1.png"));
+        // } catch (IOException e) {
+        // // TODO: handle exception
+        // e.printStackTrace();
+        // }
+        ImageIcon i = new ImageIcon("OOPProject\\Image\\Enemy1.png");
+        image = i.getImage();
     }
 
     @Override

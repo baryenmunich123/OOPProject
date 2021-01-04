@@ -37,12 +37,12 @@ public class GameWorldState {
 	public void initializeEnemy() {
 		Enemy e1 = new StandingEnemy(100, 100, this);
 		Enemy_Manager.addEnemy(e1);
-		Enemy e1 = new StandingEnemy(500, 100, this);
-		Enemy_Manager.addEnemy(e1);
-		Enemy e1 = new StandingEnemy(1000, 100, this);
-		Enemy_Manager.addEnemy(e1);
-		Enemy e1 = new StandingEnemy(1250, 100, this);
-		Enemy_Manager.addEnemy(e1);
+		Enemy e2 = new StandingEnemy(500, 100, this);
+		Enemy_Manager.addEnemy(e2);
+		Enemy e3 = new StandingEnemy(1000, 100, this);
+		Enemy_Manager.addEnemy(e3);
+		Enemy e4 = new StandingEnemy(1250, 100, this);
+		Enemy_Manager.addEnemy(e4);
 	}
 
 	public void Update() {

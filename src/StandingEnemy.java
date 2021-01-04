@@ -17,7 +17,8 @@ public class StandingEnemy extends Enemy {
         setDamage(10);
         setHP(30);
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/Enemy1.png"));
+            image = ImageIO.read(getClass()
+                    .getResourceAsStream("C:\\Users\\NGUYENTHANHPHONG\\Desktop\\OOPProject\\Image\\Enemy1.png"));
         } catch (IOException e) {
             // TODO: handle exception
             e.printStackTrace();

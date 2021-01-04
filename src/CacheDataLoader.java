@@ -50,7 +50,7 @@ public class CacheDataLoader {
     
     public void LoadBackgroundMap() throws IOException{
 
-        String backgroundmapfile = "background_map.txt";
+        String backgroundmapfile = "map/background_map.txt";
         FileReader fr = new FileReader(backgroundmapfile);
         BufferedReader br = new BufferedReader(fr);
         
@@ -85,7 +85,7 @@ public class CacheDataLoader {
     
     public void LoadPhysMap() throws IOException{
 
-        String physmapfile = "phys_map.txt";
+        String physmapfile = "map/phys_map.txt";
         FileReader fr = new FileReader(physmapfile);
         BufferedReader br = new BufferedReader(fr);
         
@@ -122,7 +122,7 @@ public class CacheDataLoader {
         
         frameImages = new Hashtable<String, FrameImage>();
 
-        String framefile = "frame.txt";
+        String framefile = "map/frame.txt";
         FileReader fr = new FileReader(framefile);
         BufferedReader br = new BufferedReader(fr);
         

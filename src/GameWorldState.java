@@ -71,6 +71,7 @@ public class GameWorldState {
 				} else {
 					bossfight = 0;
 					megaman.stopRunning();
+					camera.lock();
 					state = game;
 				}
 				break;

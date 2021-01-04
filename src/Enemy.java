@@ -145,13 +145,25 @@ public abstract class Enemy {
         }
     }
 
-    public boolean checkVisible() {
-        if (this.startX - getGameWorld().camera.getX() > getGameWorld().camera.getWidth()
-                || this.startX - getGameWorld().camera.getX() < -50
-                || this.startY - getGameWorld().camera.getY() > getGameWorld().camera.getHeight()
-                || this.startY - getGameWorld().camera.getY() < -50)
+    // public boolean checkVisible() {
+    // if (this.startX - getGameWorld().camera.getX() >
+    // getGameWorld().camera.getWidth()
+    // || this.startX - getGameWorld().camera.getX() < -50
+    // || this.startY - getGameWorld().camera.getY() >
+    // getGameWorld().camera.getHeight()
+    // || this.startY - getGameWorld().camera.getY() < -50)
+    // return true;
+    // return false;
+    // }
+    public boolean OutOfView() {
+        if (getStartX() - getGameWorld().camera.getX() > (getGameWorld().camera.getWidth() + 10)
+                || (getStartX() - 20) < getGameWorld().camera.getX()
+                || getStartY() - getGameWorld().camera.getY() > (getGameWorld().camera.getHeight() + 10)
+                || (getStartY() - 20) < getGameWorld().camera.getY()) {
             return true;
-        return false;
+        } else {
+            return false;
+        }
     }
 
     public void damagedUpdate() {

@@ -63,7 +63,7 @@ public class Enemy_Manager {
         synchronized (listOfEnemies) {
             for (int i = 0; i < listOfEnemies.size(); i++) {
                 Enemy e = listOfEnemies.get(i);
-                if (!e.checkVisible())
+                if (!e.OutOfView())
                     e.updateState();
                 if (e.getState() == 2) // 2 = DEATH
                     listOfEnemies.remove(i);
@@ -74,7 +74,7 @@ public class Enemy_Manager {
     public void draw(Graphics2D g2) {
         synchronized (listOfEnemies) {
             for (Enemy e : listOfEnemies) {
-                if (!e.checkVisible())
+                if (!e.OutOfView())
                     e.draw(g2);
             }
         }

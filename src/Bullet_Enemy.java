@@ -7,10 +7,10 @@ public class Bullet_Enemy extends Enemy {
     private int speedX = 1;
     private int speedY = 1;
 
-    public Bullet_Enemy(double startX, double startY, double width, double height, GameWorldState gameWorld) {
-        super(startX, startY, width, height, gameWorld);
+    public Bullet_Enemy(double startX, double startY, GameWorldState gameWorld) {
+        super(startX, startY, 20, 20, gameWorld);
         // TODO Auto-generated constructor stub
-        setDamage(1);
+        setDamage(10);
     }
 
     public int getSpeedX() {
@@ -57,5 +57,17 @@ public class Bullet_Enemy extends Enemy {
         // == 0)
         // getGameWorld().megaman.setHP(getGameWorld().megaman.getHP() -
         // super.getDamage());
+    }
+
+    public boolean OutOfView() {
+        if (super.getStartX() - super.getGameWorld().camera.getX() > (super.getGameWorld().camera.getWidth() + 10)
+                || (super.getStartX() - 20) < super.getGameWorld().camera.getX()
+                || super.getStartY()
+                        - super.getGameWorld().camera.getY() > (super.getGameWorld().camera.getHeight() + 10)
+                || (super.getStartY() - 20) < super.getGameWorld().camera.getY()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

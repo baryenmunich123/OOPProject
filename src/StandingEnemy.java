@@ -16,7 +16,7 @@ public class StandingEnemy extends Enemy {
     public StandingEnemy(double startX, double startY, GameWorldState gameWorld) {
         super(startX, startY, 50, 50, gameWorld);
         // TODO Auto-generated constructor stub
-        setDamage(10);
+        setDamage(1);
         setHP(30);
         // try {
         // image =

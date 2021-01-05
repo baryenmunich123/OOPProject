@@ -152,4 +152,7 @@ public class GameWorldState {
 				break;
 		}
 	}
+	public BufferedImage getBufferedImage() {
+		return bufferedImage;
+	}
 }

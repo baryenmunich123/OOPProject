@@ -30,6 +30,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 			repaint();
 		}
 	}
+	public void paint(Graphics g) {
+		g.drawImage(gameWorld.getBufferedImage(), 0, 0, this);
+	}
 	@Override
     public void keyTyped(KeyEvent e) {}
 

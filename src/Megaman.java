@@ -399,12 +399,12 @@ public class Megaman extends GCompound {
 					StartDamageTimer = System.currentTimeMillis();
 					HP = HP - object1.getDamage();
 					if (Direction == 1) {
-						set_X(this.x + 2);
+						set_X(this.x + 20);
 						speedX = 0;
 					}
 					else {
 						if (Direction == 2) {
-							set_X(this.x - 2);
+							set_X(this.x - 20);
 							speedX = 0;
 						}
 					}
@@ -413,7 +413,11 @@ public class Megaman extends GCompound {
 					}
 				}
 			}
-			state = 0;
+			if (System.currentTimeMillis() - StartDamageTimer > 500)
+				state = 0;
+			else {
+				stopRunning();
+			}
 			break;
 		case 2: //Death
 			break;

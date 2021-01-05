@@ -133,8 +133,10 @@ public abstract class Enemy {
             case 0: // Alive
                 // Megaman man = getGameWorld().megaman.getCollisionWithEnemy(this);
                 Bullet_Megaman bullet = gameWorld.Bullet_Megaman_Manager.getCollisionEnemy(this);
-                if (bullet.getDamage() > 0)
-                    state = 1;
+                if (bullet != null) {
+                    if (bullet.getDamage() > 0)
+                        state = 1;
+                }
                 break;
             case 1: // Damaged;
                 if (this.HP == 0)

@@ -29,6 +29,12 @@ public class Camera {
 			if (Math.abs(megaman.get_X() - this.x) >= 500 /*starting position of camera movement*/) {
 				setX(megaman.get_X() - 500);
 			}
+			
+			if ( megaman.get_X() > 500) {
+				if (Math.abs(megaman.get_X() - this.x) <= 500 /*starting position of camera movement*/) {
+					setX(megaman.get_X() - 500);
+				}
+			}
 			if (megaman.get_Y() - this.y > 400) /*starting position of camera movement*/{
 				setY(megaman.get_Y() - 400);
 			}

@@ -317,9 +317,9 @@ public class Megaman extends GCompound {
 						else {
 							g2.drawImage(RunShootRight1.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
 							//g2.dispose();
-							//g2.drawImage(RunShootRight2.getImage(), (int)x+1, (int)y, null);
+							//g2.drawImage(RunShootRight2.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
 							//g2.dispose();
-							//g2.drawImage(RunShootRight3.getImage(), (int)x+2, (int)y, null);
+							//g2.drawImage(RunShootRight3.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
 							//g2.dispose();
 						}
 					}
@@ -373,7 +373,7 @@ public class Megaman extends GCompound {
 			else {
 				g2.drawImage(DamageRight.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
 				//g2.dispose();
-				//g2.drawImage(DamageRight.getImage(), (int)x-1, (int)y, null);
+				//g2.drawImage(DamageRight.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
 				//g2.dispose();
 				//g2.drawImage(DamageRight.getImage(), (int)x-2, (int)y, null);
 			}
@@ -399,12 +399,12 @@ public class Megaman extends GCompound {
 					StartDamageTimer = System.currentTimeMillis();
 					HP = HP - object1.getDamage();
 					if (Direction == 1) {
-						set_X(this.x + 2);
+						set_X(this.x + 20);
 						speedX = 0;
 					}
 					else {
 						if (Direction == 2) {
-							set_X(this.x - 2);
+							set_X(this.x - 20);
 							speedX = 0;
 						}
 					}
@@ -413,7 +413,11 @@ public class Megaman extends GCompound {
 					}
 				}
 			}
-			state = 0;
+			if (System.currentTimeMillis() - StartDamageTimer > 500)
+				state = 0;
+			else {
+				stopRunning();
+			}
 			break;
 		case 2: //Death
 			break;
@@ -427,7 +431,7 @@ public class Megaman extends GCompound {
 					set_X((float)r1.getX() + (float)r1.getWidth());
 					//speedX = 0;
 				}
-				if (Direction == 1 && gameWorld.physicalMap.haveCollisionWithRightWall(this.getRightRect()) != null) {
+				if (Direction == 2 && gameWorld.physicalMap.haveCollisionWithRightWall(this.getRightRect()) != null) {
 					Rectangle r2 = gameWorld.physicalMap.haveCollisionWithRightWall(this.getRightRect());
 					set_X((float)r2.getX() - (float)StandRight.getWidth());
 					//speedX = 0;

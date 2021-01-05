@@ -55,7 +55,7 @@ public class Megaman extends GCompound {
 	private int Shooting = 0;
 	private long ShootTimer;
 	private long StartDamageTimer = 0;
-	//private long EndDamageTimer;
+	private long EndDamageTimer;
 	
 	public Megaman(float x, float y, GameWorldState gameWorld) {
 		this.x = x;

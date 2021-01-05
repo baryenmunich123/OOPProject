@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
+
 import java.awt.*;
 
 public class FlyEnemy extends Enemy {
@@ -29,8 +30,11 @@ public class FlyEnemy extends Enemy {
     @Override
     public void Attack() {
         // TODO Auto-generated method stub
-        Bullet_Enemy bullet = new Bullet_Enemy(super.getStartX(), super.getStartY(), super.getGameWorld());
-        super.getGameWorld().Enemy_Manager.addEnemy(bullet);
+        Bullet_Enemy bulletLeft = new Bullet_Enemy(super.getStartX(), super.getStartY(), super.getGameWorld());
+        super.getGameWorld().Enemy_Manager.addEnemy(bulletLeft);
+        Bullet_Enemy bulletRight = new Bullet_Enemy(super.getStartX(), super.getStartY(), super.getGameWorld());
+        bulletRight.setSpeedX(-bulletRight.getSpeedX());
+        super.getGameWorld().Enemy_Manager.addEnemy(bulletRight);
     }
 
     @Override

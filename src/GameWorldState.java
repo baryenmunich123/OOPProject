@@ -35,13 +35,13 @@ public class GameWorldState {
 	}
 
 	public void initializeEnemy() {
-		Enemy e1 = new StandingEnemy(100, 100, this);
+		Enemy e1 = new StandingEnemy(1000, 500, this);
 		Enemy_Manager.addEnemy(e1);
-		Enemy e2 = new StandingEnemy(500, 100, this);
+		Enemy e2 = new StandingEnemy(2000, 600, this);
 		Enemy_Manager.addEnemy(e2);
-		Enemy e3 = new StandingEnemy(1000, 100, this);
+		Enemy e3 = new StandingEnemy(3000, 600, this);
 		Enemy_Manager.addEnemy(e3);
-		Enemy e4 = new StandingEnemy(1250, 100, this);
+		Enemy e4 = new StandingEnemy(5000, 500, this);
 		Enemy_Manager.addEnemy(e4);
 	}
 

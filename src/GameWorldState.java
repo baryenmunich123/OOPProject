@@ -25,7 +25,7 @@ public class GameWorldState {
 
 	public GameWorldState() {
 		bufferedImage = new BufferedImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT, BufferedImage.TYPE_INT_ARGB);
-		megaman = new Megaman(20, 20, this);
+		megaman = new Megaman(200, 443, this);
 		physicalMap = new PhysicalMap(0, 0, this);
 		backgroundMap = new BackgroundMap(0, 0, this);
 		camera = new Camera(0, 0, Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT, this);
@@ -35,13 +35,13 @@ public class GameWorldState {
 	}
 
 	public void initializeEnemy() {
-		Enemy e1 = new StandingEnemy(100, 100, this);
+		Enemy e1 = new StandingEnemy(1000, 500, this);
 		Enemy_Manager.addEnemy(e1);
-		Enemy e2 = new StandingEnemy(500, 100, this);
+		Enemy e2 = new StandingEnemy(2000, 600, this);
 		Enemy_Manager.addEnemy(e2);
-		Enemy e3 = new StandingEnemy(1000, 100, this);
+		Enemy e3 = new StandingEnemy(3000, 600, this);
 		Enemy_Manager.addEnemy(e3);
-		Enemy e4 = new StandingEnemy(1250, 100, this);
+		Enemy e4 = new StandingEnemy(5000, 500, this);
 		Enemy_Manager.addEnemy(e4);
 	}
 
@@ -53,14 +53,17 @@ public class GameWorldState {
 				camera.Update();
 				physicalMap.Update();
 				Enemy_Manager.UpdateEnemy();
-				if (megaman.get_X() >= 2500 && bossfight == 1) {
+				if (megaman.get_X() >= 25000 && bossfight == 1) {
 					state = boss;
+					break;
 				}
 				if (megaman.getHP() == 0) {
 					state = lose;
+					break;
 				}
 				if (Enemy_Manager.getSize() == 0) {
 					state = win;
+					break;
 				}
 				break;
 			case boss:
@@ -92,8 +95,8 @@ public class GameWorldState {
 					Enemy_Manager.draw(g2);
 					megaman.draw(g2);
 					Bullet_Megaman_Manager.draw(g2);
-					g2.setColor(Color.GRAY);
-					g2.fillRect(59, 19, 22, 102);
+					//g2.setColor(Color.GRAY);
+					//g2.fillRect(59, 19, 22, 102);
 					g2.setColor(Color.YELLOW); // 79 pixels, each 3
 					for (int i = 1; i <= megaman.getHP(); i++) {
 						g2.fillRect(20, 60 + 3 * i + i, 20, 3);
@@ -105,6 +108,7 @@ public class GameWorldState {
 						g2.drawString("YOU WIN", 450, 300);
 						break;
 					}
+					break;
 				case lose:
 					g2.setColor(Color.BLACK);
 					g2.fillRect(0, 0, Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
@@ -147,9 +151,13 @@ public class GameWorldState {
 				}
 				break;
 			case KeyEvent.VK_Z:
+				megaman.resetJump();
 				break;
 			case KeyEvent.VK_X:
 				break;
 		}
+	}
+	public BufferedImage getBufferedImage() {
+		return bufferedImage;
 	}
 }

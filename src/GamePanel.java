@@ -15,7 +15,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		setFocusable(true);
 		setFocusTraversalKeysEnabled(false);
 	}
-	public void start() {
+	public void startGame() {
 		gameThread = new Thread(this);
 		gameThread.start();
 	}
@@ -23,12 +23,29 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
+		long previousTime = System.currentTimeMillis();
+		long currentTime;
+		long sleepTime;
 		
 		while(true) { //Running
 			gameWorld.Update();
 			gameWorld.Render();
 			repaint();
+			currentTime = System.currentTimeMillis();
+			sleepTime = 100/8 - (currentTime - previousTime);
+			try{
+
+                if(sleepTime > 0)
+                        Thread.sleep(sleepTime);
+                else Thread.sleep((100/8)/2);
+
+        }catch(Exception e){}
+
+        previousTime = System.currentTimeMillis();
 		}
+	}
+	public void paint(Graphics g) {
+		g.drawImage(gameWorld.getBufferedImage(), 0, 0, this);
 	}
 	@Override
     public void keyTyped(KeyEvent e) {}

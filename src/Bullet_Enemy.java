@@ -10,7 +10,7 @@ public class Bullet_Enemy extends Enemy {
     public Bullet_Enemy(double startX, double startY, GameWorldState gameWorld) {
         super(startX, startY, 20, 20, gameWorld);
         // TODO Auto-generated constructor stub
-        setDamage(10);
+        setDamage(1);
     }
 
     public int getSpeedX() {

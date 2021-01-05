@@ -38,8 +38,8 @@ public class Bullet_Megaman {
 	}
 	public void draw(Graphics2D g2) {
 		g2.setColor(Color.YELLOW);
-		g2.drawOval((int)x, (int)y, 10, 10);
-		g2.fillOval((int)x, (int)y, 10, 10);
+		g2.drawOval((int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), 10, 10);
+		g2.fillOval((int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), 10, 10);
 	}
 	public boolean OutOfView() {
 		if (x - gameWorld.camera.getX() > (gameWorld.camera.getWidth() + 10) || (x - 20) < gameWorld.camera.getX() || y - gameWorld.camera.getY() > (gameWorld.camera.getHeight() + 10) || (y - 20) < gameWorld.camera.getY()) {

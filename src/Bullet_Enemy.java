@@ -50,7 +50,7 @@ public class Bullet_Enemy extends Enemy {
     }
 
     public void Update() {
-        super.updateState();
+        // super.updateState();
         setStartX(getStartX() + getSpeedX());
         setStartY(getStartY() + getSpeedY());
         // getBoundForCollisionWithEnemy().intersects(getGameWorld().megaman.getBodyRect());

@@ -17,7 +17,7 @@ public class StandingEnemy extends Enemy {
         super(startX, startY, 50, 50, gameWorld);
         // TODO Auto-generated constructor stub
         setDamage(1);
-        setHP(30);
+        setHP(3);
         // try {
         // image =
         // ImageIO.read(getClass().getResourceAsStream("OOPProject\\Image\\Enemy1.png"));

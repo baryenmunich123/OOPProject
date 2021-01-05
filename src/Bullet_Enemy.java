@@ -55,23 +55,24 @@ public class Bullet_Enemy extends Enemy {
     public void updateState() {
         // super.updateState();
         setStartX(getStartX() - getSpeedX());
-//        setStartY(getStartY() + getSpeedY());
+        setStartY(getStartY() + getSpeedY());
         // getBoundForCollisionWithEnemy().intersects(getGameWorld().megaman.getBodyRect());
         // if (getGameWorld().megaman.getHP() != 0 && getGameWorld().megaman.getState()
         // == 0)
         // getGameWorld().megaman.setHP(getGameWorld().megaman.getHP() -
         // super.getDamage());
     }
-
-//    public boolean OutOfView() {
-//        if (super.getStartX() - super.getGameWorld().camera.getX() > (super.getGameWorld().camera.getWidth() + 10)
-//                || (super.getStartX() - 20) < super.getGameWorld().camera.getX()
-//                || super.getStartY()
-//                        - super.getGameWorld().camera.getY() > (super.getGameWorld().camera.getHeight() + 10)
-//                || (super.getStartY() - 20) < super.getGameWorld().camera.getY()) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
+    // public boolean OutOfView() {
+    // if (super.getStartX() - super.getGameWorld().camera.getX() >
+    // (super.getGameWorld().camera.getWidth() + 10)
+    // || (super.getStartX() - 20) < super.getGameWorld().camera.getX()
+    // || super.getStartY()
+    // - super.getGameWorld().camera.getY() >
+    // (super.getGameWorld().camera.getHeight() + 10)
+    // || (super.getStartY() - 20) < super.getGameWorld().camera.getY()) {
+    // return true;
+    // } else {
+    // return false;
+    // }
+    // }
 }

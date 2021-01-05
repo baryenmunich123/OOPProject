@@ -42,6 +42,7 @@ public class StandingEnemy extends Enemy {
     public void Attack() {
         // TODO Auto-generated method stub
         Bullet_Enemy bullet = new Bullet_Enemy(getStartX(), getStartY(), getGameWorld());
+        bullet.setSpeedY(0);
         getGameWorld().Enemy_Manager.addEnemy(bullet);
     }
 

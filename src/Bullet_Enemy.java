@@ -1,7 +1,6 @@
 package src;
 
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
+import java.awt.*;
 
 public class Bullet_Enemy extends Enemy {
     private int speedX = 1;
@@ -45,7 +44,9 @@ public class Bullet_Enemy extends Enemy {
     @Override
     public void draw(Graphics2D g2) {
         // TODO Auto-generated method stub
-        g2.drawOval((int) super.getStartX(), (int) super.getStartY(), 0, 20);
+        g2.setColor(Color.BLACK);
+        g2.drawOval((int)super.getStartX() - (int)super.getGameWorld().camera.getX(), (int)super.getStartY() - (int)super.getGameWorld().camera.getY(), 10, 10);
+        g2.fillOval((int)super.getStartX() - (int)super.getGameWorld().camera.getX(), (int)super.getStartY() - (int)getGameWorld().camera.getY(), 10, 10);
     }
 
     public void Update() {

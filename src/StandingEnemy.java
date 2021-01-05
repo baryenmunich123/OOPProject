@@ -17,7 +17,7 @@ public class StandingEnemy extends Enemy {
         super(startX, startY, 50, 50, gameWorld);
         // TODO Auto-generated constructor stub
         setDamage(1);
-        setHP(3);
+        setHP(5);
         // try {
         // image =
         // ImageIO.read(getClass().getResourceAsStream("OOPProject\\Image\\Enemy1.png"));
@@ -42,6 +42,7 @@ public class StandingEnemy extends Enemy {
     public void Attack() {
         // TODO Auto-generated method stub
         Bullet_Enemy bullet = new Bullet_Enemy(getStartX(), getStartY(), getGameWorld());
+        bullet.Update();
         getGameWorld().Enemy_Manager.addEnemy(bullet);
     }
 

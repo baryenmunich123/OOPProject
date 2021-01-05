@@ -68,7 +68,8 @@ public class GameWorldState {
 				break;
 			case boss:
 				// Remove all enemies here
-				if (megaman.get_X() < 3000 && bossfight == 1) {
+				
+				if (megaman.get_X() < 30000 && bossfight == 1) {
 					megaman.run();
 					camera.setX(camera.getX() + 2);
 				} else {

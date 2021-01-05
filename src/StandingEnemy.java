@@ -25,7 +25,7 @@ public class StandingEnemy extends Enemy {
         // // TODO: handle exception
         // e.printStackTrace();
         // }
-        ImageIcon i = new ImageIcon("OOPProject\\Image\\Enemy1.png");
+        ImageIcon i = new ImageIcon("Image/Enemy1.png");
         image = i.getImage();
     }
 
@@ -48,9 +48,9 @@ public class StandingEnemy extends Enemy {
     @Override
     public void draw(Graphics2D g2) {
         // TODO Auto-generated method stub
-        if (!OutOfView()) {
-            g2.drawImage(image, (int) super.getStartX(), (int) super.getStartY(), null);
-        }
+        //if (!OutOfView()) {
+            g2.drawImage(image, (int) super.getStartX() - (int)super.getGameWorld().camera.getX() - 20, (int) super.getStartY() - (int)super.getGameWorld().camera.getY() - 50, null);
+        //}
     }
 
     public void Update() {

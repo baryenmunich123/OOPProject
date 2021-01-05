@@ -16,6 +16,9 @@ public class Bullet_Megaman_Manager {
 		synchronized(bullet) {
 			for (int i = 0; i < bullet.size(); i++) {
 				Bullet_Megaman object = bullet.get(i);
+				if (!object.OutOfView()) {
+					object.Update();
+				}
 				if (object.OutOfView() || object.getState() == 2) {
 					bullet.remove(i);
 				}

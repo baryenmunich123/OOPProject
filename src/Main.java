@@ -31,9 +31,10 @@ public class Main{
 		game = new GamePanel();
 		f.add(game);
 		f.setVisible(true);
+		f.addKeyListener(game);
 	}
 	public void start() {
-		game.start();
+		game.startGame();
 		
 	}
 	public static void main(String[]args) {

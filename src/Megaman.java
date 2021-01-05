@@ -48,6 +48,7 @@ public class Megaman extends GCompound {
 	private GRectangle BodyRect;
 	
 	private int Direction = 2; //1 is Left, 2 is Right
+	private long jumpTimer = System.currentTimeMillis() + 9999;
 	private int HP = 20;
 	private int Falling = 0;
 	private int Shooting = 0;
@@ -255,6 +256,7 @@ public class Megaman extends GCompound {
 	}
 	public void jump() {
 		if (Falling == 0) {
+			jumpTimer = System.currentTimeMillis();
 			Falling = 1;
 			this.speedY = -5;
 		}
@@ -265,11 +267,11 @@ public class Megaman extends GCompound {
 			Bullet_Megaman bullet = new Bullet_Megaman(this.x, this.y + (float)(StandRight.getHeight()/4), gameWorld);
 			gameWorld.Bullet_Megaman_Manager.add(bullet);
 			if (Direction == 1) {
-				bullet.setSpeedX(-2);
+				bullet.setSpeedX(-1);
 			}
 			else {
 				bullet.setX(this.x + (float)StandRight.getWidth());
-				bullet.setSpeedX(2);
+				bullet.setSpeedX(1);
 			}
 			ShootTimer = System.currentTimeMillis();
 		}
@@ -300,41 +302,41 @@ public class Megaman extends GCompound {
 				}
 			}
 			else {
-				if (speedX > 0) {
+				if (speedX != 0) {
 					if (Direction == 2) {
 						if (Shooting == 0) {
 							g2.drawImage(RunRight1.getImage(), (int)x, (int)y, null);
-							g2.dispose();
-							g2.drawImage(RunRight2.getImage(), (int)x+1, (int)y, null);
-							g2.dispose();
-							g2.drawImage(RunRight3.getImage(), (int)x+2, (int)y, null);
-							g2.dispose();
+							//g2.dispose();
+							//g2.drawImage(RunRight2.getImage(), (int)x+1, (int)y, null);
+							//g2.dispose();
+							//g2.drawImage(RunRight3.getImage(), (int)x+2, (int)y, null);
+							//g2.dispose();
 						}
 						else {
 							g2.drawImage(RunShootRight1.getImage(), (int)x, (int)y, null);
-							g2.dispose();
-							g2.drawImage(RunShootRight2.getImage(), (int)x+1, (int)y, null);
-							g2.dispose();
-							g2.drawImage(RunShootRight3.getImage(), (int)x+2, (int)y, null);
-							g2.dispose();
+							//g2.dispose();
+							//g2.drawImage(RunShootRight2.getImage(), (int)x+1, (int)y, null);
+							//g2.dispose();
+							//g2.drawImage(RunShootRight3.getImage(), (int)x+2, (int)y, null);
+							//g2.dispose();
 						}
 					}
 					else {
 						if (Shooting == 0) {
 							g2.drawImage(RunLeft1.getImage(), (int)x, (int)y, null);
-							g2.dispose();
-							g2.drawImage(RunLeft2.getImage(), (int)x-1, (int)y, null);
-							g2.dispose();
-							g2.drawImage(RunLeft3.getImage(), (int)x-2, (int)y, null);
-							g2.dispose();
+							//g2.dispose();
+							//g2.drawImage(RunLeft2.getImage(), (int)x-1, (int)y, null);
+							//g2.dispose();
+							//g2.drawImage(RunLeft3.getImage(), (int)x-2, (int)y, null);
+							//g2.dispose();
 						}
 						else {
 							g2.drawImage(RunShootLeft1.getImage(), (int)x, (int)y, null);
-							g2.dispose();
-							g2.drawImage(RunShootLeft2.getImage(), (int)x-1, (int)y, null);
-							g2.dispose();
-							g2.drawImage(RunShootLeft3.getImage(), (int)x-2, (int)y, null);
-							g2.dispose();
+							//g2.dispose();
+							//g2.drawImage(RunShootLeft2.getImage(), (int)x-1, (int)y, null);
+							//g2.dispose();
+							//g2.drawImage(RunShootLeft3.getImage(), (int)x-2, (int)y, null);
+							//g2.dispose();
 						}
 					}
 				}
@@ -412,7 +414,7 @@ public class Megaman extends GCompound {
 			break;
 		}
 		if (state == 1 || state == 0) {
-			if (Falling == 0) {
+			//if (Falling == 0) {
 				set_X(x + speedX);
 				if (Direction == 1 && gameWorld.physicalMap.haveCollisionWithLeftWall(this.getBodyRect()) != null) {
 					Rectangle r1 = gameWorld.physicalMap.haveCollisionWithLeftWall(this.getBodyRect());
@@ -434,11 +436,13 @@ public class Megaman extends GCompound {
 					set_Y((float)r4.getY() - (float)BodyRect.getHeight());
 				}
 				else {
-					Falling = 1;
-					speedY = -5;
-					set_Y(y + speedY);
+					if (System.currentTimeMillis() - jumpTimer > 500) {
+						Falling = 1;
+						speedY = 5;
+						set_Y(y + speedY);
+					}
 				}
-			}
+			//}
 		}
 		if (Shooting == 1) {
 			if (System.currentTimeMillis() - ShootTimer > 20) {
@@ -493,5 +497,8 @@ public class Megaman extends GCompound {
 	}
 	public int getSpeedX() {
 		return speedX;
+	}
+	public void resetJump() {
+		jumpTimer = System.currentTimeMillis() + 9999;
 	}
 }

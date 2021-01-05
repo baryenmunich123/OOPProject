@@ -54,11 +54,20 @@ public class StandingEnemy extends Enemy {
         //}
     }
 
-    public void Update() {
+    @Override
+    public void updateState() {
         super.updateState();
         if (System.nanoTime() - startTimeToShoot > 1000 * 100000000) {
             Attack();
             startTimeToShoot = System.nanoTime();
         }
     }
+
+//    public void Update() {
+//        super.updateState();
+//        if (System.nanoTime() - startTimeToShoot > 1000 * 100000000) {
+//            Attack();
+//            startTimeToShoot = System.nanoTime();
+//        }
+//    }
 }

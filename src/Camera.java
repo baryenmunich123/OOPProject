@@ -1,4 +1,6 @@
 package src;
+import java.util.*;
+import java.lang.*;
 
 public class Camera {
 	private float x;
@@ -24,7 +26,7 @@ public class Camera {
 	public void Update() {
 		if (this.fixed == false) {
 			Megaman megaman = gameWorld.megaman; //get Megaman from the current stage
-			if (megaman.get_X() - this.x >= 500 /*starting position of camera movement*/) {
+			if (Math.abs(megaman.get_X() - this.x) >= 500 /*starting position of camera movement*/) {
 				setX(megaman.get_X() - 500);
 			}
 			if (megaman.get_Y() - this.y > 400) /*starting position of camera movement*/{

@@ -53,7 +53,7 @@ public class GameWorldState {
 				camera.Update();
 				physicalMap.Update();
 				Enemy_Manager.UpdateEnemy();
-				if (megaman.get_X() >= 2500 && bossfight == 1) {
+				if (megaman.get_X() >= 25000 && bossfight == 1) {
 					state = boss;
 					break;
 				}

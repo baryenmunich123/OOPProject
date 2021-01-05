@@ -286,18 +286,18 @@ public class Megaman extends GCompound {
 			if (Falling == 1) {
 				if (Direction == 1) {
 					if(Shooting == 0) {
-						g2.drawImage(JumpLeft.getImage(), (int)x, (int)y, null);
+						g2.drawImage(JumpLeft.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
 					}
 					else {
-						g2.drawImage(JumpShootLeft.getImage(), (int)x, (int)y, null);
+						g2.drawImage(JumpShootLeft.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
 					}
 				}
 				else {
 					if (Shooting == 0) {
-						g2.drawImage(JumpRight.getImage(), (int)x, (int)y, null);
+						g2.drawImage(JumpRight.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
 					}
 					else {
-						g2.drawImage(JumpShootRight.getImage(), (int)x, (int)y, null);
+						g2.drawImage(JumpShootRight.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
 					}
 				}
 			}
@@ -305,7 +305,7 @@ public class Megaman extends GCompound {
 				if (speedX != 0) {
 					if (Direction == 2) {
 						if (Shooting == 0) {
-							g2.drawImage(RunRight1.getImage(), (int)x, (int)y, null);
+							g2.drawImage(RunRight1.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
 							//g2.dispose();
 							//g2.drawImage(RunRight2.getImage(), (int)x+1, (int)y, null);
 							//g2.dispose();
@@ -313,7 +313,7 @@ public class Megaman extends GCompound {
 							//g2.dispose();
 						}
 						else {
-							g2.drawImage(RunShootRight1.getImage(), (int)x, (int)y, null);
+							g2.drawImage(RunShootRight1.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
 							//g2.dispose();
 							//g2.drawImage(RunShootRight2.getImage(), (int)x+1, (int)y, null);
 							//g2.dispose();
@@ -323,7 +323,7 @@ public class Megaman extends GCompound {
 					}
 					else {
 						if (Shooting == 0) {
-							g2.drawImage(RunLeft1.getImage(), (int)x, (int)y, null);
+							g2.drawImage(RunLeft1.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
 							//g2.dispose();
 							//g2.drawImage(RunLeft2.getImage(), (int)x-1, (int)y, null);
 							//g2.dispose();
@@ -331,7 +331,7 @@ public class Megaman extends GCompound {
 							//g2.dispose();
 						}
 						else {
-							g2.drawImage(RunShootLeft1.getImage(), (int)x, (int)y, null);
+							g2.drawImage(RunShootLeft1.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
 							//g2.dispose();
 							//g2.drawImage(RunShootLeft2.getImage(), (int)x-1, (int)y, null);
 							//g2.dispose();
@@ -343,18 +343,18 @@ public class Megaman extends GCompound {
 				else {
 					if(Direction == 1) {
 						if (Shooting == 0) {
-							g2.drawImage(StandLeft.getImage(), (int)x, (int)y, null);
+							g2.drawImage(StandLeft.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
 						}
 						else {
-							g2.drawImage(ShootLeft.getImage(), (int)x, (int)y, null);
+							g2.drawImage(ShootLeft.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
 						}
 					}
 					else {
 						if (Shooting == 0) {
-							g2.drawImage(StandRight.getImage(), (int)x, (int)y, null);
+							g2.drawImage(StandRight.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
 						}
 						else {
-							g2.drawImage(ShootRight.getImage(), (int)x, (int)y, null);
+							g2.drawImage(ShootRight.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
 						}
 					}
 				}

@@ -48,7 +48,8 @@ public class Megaman extends GCompound {
 	private GRectangle BodyRect;
 	
 	private int Direction = 2; //1 is Left, 2 is Right
-	private long jumpTimer = System.currentTimeMillis() + 9999;
+	private int Jump = 0;
+	private long jumpTimer = 0;
 	private int HP = 20;
 	private int Falling = 0;
 	private int Shooting = 0;
@@ -87,7 +88,7 @@ public class Megaman extends GCompound {
 		RightRect = new GRectangle(this.x + StandRight.getWidth() - 3, this.y, 3, StandRight.getHeight() - 5);
 		UpRect = new GRectangle(this.x + 1, this.y - 1, StandRight.getWidth() - 2, 3);
 		DownRect = new GRectangle(this.x + 1, this.y + StandRight.getHeight() - 3, StandRight.getWidth() - 2, 3);
-		BodyRect = new GRectangle(this.x, this.y, StandRight.getWidth(), StandRight.getHeight());
+		BodyRect = new GRectangle(this.x, this.y, StandRight.getWidth()-1, StandRight.getHeight()-1);
 		
 		/*add(StandRight);
 		add(StandLeft);
@@ -256,6 +257,7 @@ public class Megaman extends GCompound {
 	}
 	public void jump() {
 		if (Falling == 0) {
+			Jump = 1;
 			jumpTimer = System.currentTimeMillis();
 			Falling = 1;
 			this.speedY = -5;
@@ -281,8 +283,8 @@ public class Megaman extends GCompound {
 	}
 	public void draw(Graphics2D g2) {
 		switch(state) {
-		case 0: //Alive
-		case 4: //Normal
+		//case 0: //Alive
+		case 0: //Normal
 			if (Falling == 1) {
 				if (Direction == 1) {
 					if(Shooting == 0) {
@@ -362,18 +364,18 @@ public class Megaman extends GCompound {
 			break;
 		case 1: //Damaged
 			if (Direction == 1) {
-				g2.drawImage(DamageLeft.getImage(), (int)x, (int)y, null);
-				g2.dispose();
-				g2.drawImage(DamageLeft.getImage(), (int)x+1, (int)y, null);
-				g2.dispose();
-				g2.drawImage(DamageLeft.getImage(), (int)x+2, (int)y, null);
+				g2.drawImage(DamageLeft.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
+				//g2.dispose();
+				//g2.drawImage(DamageLeft.getImage(), (int)x+1, (int)y, null);
+				//g2.dispose();
+				//g2.drawImage(DamageLeft.getImage(), (int)x+2, (int)y, null);
 			}
 			else {
-				g2.drawImage(DamageRight.getImage(), (int)x, (int)y, null);
-				g2.dispose();
-				g2.drawImage(DamageRight.getImage(), (int)x-1, (int)y, null);
-				g2.dispose();
-				g2.drawImage(DamageRight.getImage(), (int)x-2, (int)y, null);
+				g2.drawImage(DamageRight.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
+				//g2.dispose();
+				//g2.drawImage(DamageRight.getImage(), (int)x-1, (int)y, null);
+				//g2.dispose();
+				//g2.drawImage(DamageRight.getImage(), (int)x-2, (int)y, null);
 			}
 			break;
 		}
@@ -392,37 +394,43 @@ public class Megaman extends GCompound {
 			break;
 		case 1: //Damaged
 			Enemy object1 = gameWorld.Enemy_Manager.getCollisionMegaman(this);
-			if (System.currentTimeMillis() - StartDamageTimer > 80) {
-				StartDamageTimer = System.currentTimeMillis();
-				HP = HP - object1.getDamage();
-				if (Direction == 1) {
-					set_X(this.x + 2);
-					speedX = 0;
-				}
-				else {
-					if (Direction == 2) {
-						set_X(this.x - 2);
+			if (object1 != null) {
+				if (System.currentTimeMillis() - StartDamageTimer > 1000) {
+					StartDamageTimer = System.currentTimeMillis();
+					HP = HP - object1.getDamage();
+					if (Direction == 1) {
+						set_X(this.x + 2);
 						speedX = 0;
 					}
-				}
-				if (HP == 0) {
-					state = 2;
+					else {
+						if (Direction == 2) {
+							set_X(this.x - 2);
+							speedX = 0;
+						}
+					}
+					if (HP == 0) {
+						state = 2;
+					}
 				}
 			}
+			state = 0;
 			break;
 		case 2: //Death
 			break;
 		}
 		if (state == 1 || state == 0) {
 			//if (Falling == 0) {
+				set_Y(y + speedY);
 				set_X(x + speedX);
-				if (Direction == 1 && gameWorld.physicalMap.haveCollisionWithLeftWall(this.getBodyRect()) != null) {
-					Rectangle r1 = gameWorld.physicalMap.haveCollisionWithLeftWall(this.getBodyRect());
+				if (Direction == 1 && gameWorld.physicalMap.haveCollisionWithLeftWall(this.getLeftRect()) != null) {
+					Rectangle r1 = gameWorld.physicalMap.haveCollisionWithLeftWall(this.getLeftRect());
 					set_X((float)r1.getX() + (float)r1.getWidth());
+					//speedX = 0;
 				}
-				if (Direction == 1 && gameWorld.physicalMap.haveCollisionWithRightWall(this.getBodyRect()) != null) {
-					Rectangle r2 = gameWorld.physicalMap.haveCollisionWithLeftWall(this.getBodyRect());
-					set_X((float)r2.getX() - (float)BodyRect.getWidth());
+				if (Direction == 1 && gameWorld.physicalMap.haveCollisionWithRightWall(this.getRightRect()) != null) {
+					Rectangle r2 = gameWorld.physicalMap.haveCollisionWithRightWall(this.getRightRect());
+					set_X((float)r2.getX() - (float)StandRight.getWidth());
+					//speedX = 0;
 				}
 				if (gameWorld.physicalMap.haveCollisionWithTop(getUpRect()) != null) {
 					Rectangle r3 = gameWorld.physicalMap.haveCollisionWithTop(getUpRect());
@@ -436,16 +444,16 @@ public class Megaman extends GCompound {
 					set_Y((float)r4.getY() - (float)BodyRect.getHeight());
 				}
 				else {
-					if (System.currentTimeMillis() - jumpTimer > 500) {
+					if (System.currentTimeMillis() - jumpTimer > 300) {
 						Falling = 1;
 						speedY = 5;
-						set_Y(y + speedY);
+						//set_Y(y + speedY);
 					}
 				}
 			//}
 		}
 		if (Shooting == 1) {
-			if (System.currentTimeMillis() - ShootTimer > 20) {
+			if (System.currentTimeMillis() - ShootTimer > 200) {
 				Shooting = 0;
 			}
 		}
@@ -479,12 +487,12 @@ public class Megaman extends GCompound {
 	}
 	public Rectangle getBodyRect() {
 		Rectangle body = BodyRect.toRectangle();
-		body.setBounds((int)x, (int)y, (int)BodyRect.getWidth(), (int)BodyRect.getHeight());
+		body.setBounds((int)x, (int)y, (int)StandRight.getWidth(), (int)StandRight.getHeight());
 		return body;
 	}
 	public Rectangle getDownRect() {
 		Rectangle down = DownRect.toRectangle();
-		down.setBounds((int)this.x + 1, (int)this.y + (int)StandRight.getHeight() - 3, (int)StandRight.getWidth() - 2, 3);
+		down.setBounds((int)this.x + 1, (int)this.y + (int)StandRight.getHeight() - 1, (int)StandRight.getWidth() - 2, 3);
 		return down;
 	}
 	public Rectangle getUpRect() {
@@ -499,6 +507,17 @@ public class Megaman extends GCompound {
 		return speedX;
 	}
 	public void resetJump() {
+		speedY = 5;
 		jumpTimer = System.currentTimeMillis() + 9999;
+	}
+	public Rectangle getLeftRect() {
+		Rectangle left = LeftRect.toRectangle();
+		left.setBounds((int)this.x, (int)this.y + 1, 3, (int)StandRight.getHeight() - 5);
+		return left;
+	}
+	public Rectangle getRightRect() {
+		Rectangle right = RightRect.toRectangle();
+		right.setBounds((int)this.x + (int)StandRight.getWidth() - 3, (int)this.y, 3, (int)StandRight.getHeight() - 5);
+		return right;
 	}
 }

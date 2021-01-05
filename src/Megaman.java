@@ -49,7 +49,7 @@ public class Megaman extends GCompound {
 	
 	private int Direction = 2; //1 is Left, 2 is Right
 	private int Jump = 0;
-	private long jumpTimer = System.currentTimeMillis() + 9999;
+	private long jumpTimer = 0;
 	private int HP = 20;
 	private int Falling = 0;
 	private int Shooting = 0;
@@ -453,7 +453,7 @@ public class Megaman extends GCompound {
 			//}
 		}
 		if (Shooting == 1) {
-			if (System.currentTimeMillis() - ShootTimer > 20) {
+			if (System.currentTimeMillis() - ShootTimer > 200) {
 				Shooting = 0;
 			}
 		}

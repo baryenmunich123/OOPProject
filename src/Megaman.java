@@ -317,9 +317,9 @@ public class Megaman extends GCompound {
 						else {
 							g2.drawImage(RunShootRight1.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
 							//g2.dispose();
-							//g2.drawImage(RunShootRight2.getImage(), (int)x+1, (int)y, null);
+							//g2.drawImage(RunShootRight2.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
 							//g2.dispose();
-							//g2.drawImage(RunShootRight3.getImage(), (int)x+2, (int)y, null);
+							//g2.drawImage(RunShootRight3.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
 							//g2.dispose();
 						}
 					}
@@ -373,7 +373,7 @@ public class Megaman extends GCompound {
 			else {
 				g2.drawImage(DamageRight.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
 				//g2.dispose();
-				//g2.drawImage(DamageRight.getImage(), (int)x-1, (int)y, null);
+				//g2.drawImage(DamageRight.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
 				//g2.dispose();
 				//g2.drawImage(DamageRight.getImage(), (int)x-2, (int)y, null);
 			}

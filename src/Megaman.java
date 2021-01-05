@@ -431,7 +431,7 @@ public class Megaman extends GCompound {
 					set_X((float)r1.getX() + (float)r1.getWidth());
 					//speedX = 0;
 				}
-				if (Direction == 1 && gameWorld.physicalMap.haveCollisionWithRightWall(this.getRightRect()) != null) {
+				if (Direction == 2 && gameWorld.physicalMap.haveCollisionWithRightWall(this.getRightRect()) != null) {
 					Rectangle r2 = gameWorld.physicalMap.haveCollisionWithRightWall(this.getRightRect());
 					set_X((float)r2.getX() - (float)StandRight.getWidth());
 					//speedX = 0;

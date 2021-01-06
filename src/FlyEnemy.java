@@ -16,12 +16,12 @@ public class FlyEnemy extends Enemy {
     public FlyEnemy(double startX, double startY, GameWorldState gameWorld) {
         super(startX, startY, 50, 50, gameWorld);
         // TODO Auto-generated constructor stub
-        setDamage(1);
+        setDamage(3);
         setHP(3);
-        ImageIcon i = new ImageIcon("Image/Enemy2.png");
+        ImageIcon i = new ImageIcon("Image/Enemy3.png");
         img = i.getImage();
-        leftPosition = super.getStartX() - 50;
-        rightPosistion = super.getStartX() + 50;
+        leftPosition = super.getStartX() - 150;
+        rightPosistion = super.getStartX() + 150;
     }
 
     public int getSpeedX() {
@@ -42,11 +42,11 @@ public class FlyEnemy extends Enemy {
     @Override
     public void Attack() {
         // TODO Auto-generated method stub
-        Bullet_Enemy bulletLeft = new Bullet_Enemy(super.getStartX(), super.getStartY(), super.getGameWorld());
-        super.getGameWorld().Enemy_Manager.addEnemy(bulletLeft);
-        Bullet_Enemy bulletRight = new Bullet_Enemy(super.getStartX(), super.getStartY(), super.getGameWorld());
-        bulletRight.setSpeedX(-bulletRight.getSpeedX());
-        super.getGameWorld().Enemy_Manager.addEnemy(bulletRight);
+//        Bullet_Enemy bulletLeft = new Bullet_Enemy(super.getStartX(), super.getStartY(), super.getGameWorld());
+//        super.getGameWorld().Enemy_Manager.addEnemy(bulletLeft);
+//        Bullet_Enemy bulletRight = new Bullet_Enemy(super.getStartX(), super.getStartY(), super.getGameWorld());
+//        bulletRight.setSpeedX(-bulletRight.getSpeedX());
+//        super.getGameWorld().Enemy_Manager.addEnemy(bulletRight);
     }
 
     @Override
@@ -60,10 +60,10 @@ public class FlyEnemy extends Enemy {
     @Override
     public void updateState() {
         super.updateState();
-        if (super.getStartX() < leftPosition)
-            setSpeedX(2);
-        else if (super.getStartX() > rightPosistion)
-            setSpeedX(-2);
+        if (super.getStartX() == leftPosition)
+            setSpeedX(5);
+        else if (super.getStartX() == rightPosistion)
+            setSpeedX(-5);
         setStartX(super.getStartX() + getSpeedX());
         if (System.nanoTime() - startTimeToShoot > 1000 * 10000000) {
             Attack();

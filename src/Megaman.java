@@ -448,7 +448,7 @@ public class Megaman extends GCompound {
 				if (gameWorld.physicalMap.haveCollisionWithTop(getUpRect()) != null) {
 					Rectangle r3 = gameWorld.physicalMap.haveCollisionWithTop(getUpRect());
 					speedY = 0;
-					//resetJump();
+					resetJump();
 					set_Y((float)r3.getY() + gameWorld.physicalMap.getTileSize());
 				}
 				if (gameWorld.physicalMap.haveCollisionWithLand(getDownRect()) != null) {

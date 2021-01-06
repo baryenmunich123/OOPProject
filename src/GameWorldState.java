@@ -45,6 +45,8 @@ public class GameWorldState {
 		Enemy_Manager.addEnemy(e4);
 		Enemy e5 = new FlyEnemy(700,350,this);
 		Enemy_Manager.addEnemy(e5);
+		Enemy e6 = new FlyEnemy(900,350,this);
+		Enemy_Manager.addEnemy(e6);
 	}
 
 	public void Update() {

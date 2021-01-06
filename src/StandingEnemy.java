@@ -52,6 +52,7 @@ public class StandingEnemy extends Enemy {
         // if (!OutOfView()) {
         g2.drawImage(image, (int) super.getStartX() - (int) super.getGameWorld().camera.getX() - 20,
                 (int) super.getStartY() - (int) super.getGameWorld().camera.getY() - 50, null);
+//        drawBoundForCollisionWithEnemy(g2);
         // }
     }
 

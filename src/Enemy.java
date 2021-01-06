@@ -1,7 +1,6 @@
 package src;
 
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
+import java.awt.*;
 
 public abstract class Enemy {
     // public static final int Enemy_Team = 2;
@@ -114,13 +113,13 @@ public abstract class Enemy {
     // rect.width, rect.height);
     // }
 
-    // public void drawBoundForCollisionWithEnemy(Graphics2D g2) {
-    // Rectangle rect = getBoundForCollisionWithEnemy();
-    // g2.setColor(Color.RED);
-    // g2.drawRect(rect.x - (int) getGameWorld().camera.getPosX(), rect.y - (int)
-    // getGameWorld().camera.getPosY(),
-    // rect.width, rect.height);
-    // }
+     public void drawBoundForCollisionWithEnemy(Graphics2D g2) {
+     Rectangle rect = getBoundForCollisionWithEnemy();
+     g2.setColor(Color.RED);
+     g2.drawRect(rect.x - (int) getGameWorld().camera.getX(), rect.y - (int)
+     getGameWorld().camera.getY(),
+     rect.width, rect.height);
+     }
 
     public void damaged(int megamanBullet) {
         this.HP = HP - megamanBullet;

@@ -29,7 +29,7 @@ public class Enemy_Manager {
 
     public void removeEnemy(Enemy e) {
         synchronized (listOfEnemies) {
-            for (int i = 0; i < listOfEnemies.size(); i++) {
+            for (int i = 0; i < listOfEnemies.size() - 1; i++) {
                 Enemy enemy = listOfEnemies.get(i);
                 if (enemy == e)
                     listOfEnemies.remove(i);
@@ -63,8 +63,9 @@ public class Enemy_Manager {
         synchronized (listOfEnemies) {
             for (int i = 0; i < listOfEnemies.size(); i++) {
                 Enemy e = listOfEnemies.get(i);
-                if (!e.OutOfView())
+                if (!e.OutOfView()) {
                     e.updateState();
+                }
                 if (e.getState() == 2) // 2 = DEATH
                     listOfEnemies.remove(i);
             }

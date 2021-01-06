@@ -256,8 +256,8 @@ public class Megaman extends GCompound {
 		this.speedX = 0;
 	}
 	public void jump() {
-		if (Falling == 0) {
-			Jump = 1;
+		if (Falling == 0 && Jump == 0) {
+			//Jump = 1;
 			jumpTimer = System.currentTimeMillis();
 			Falling = 1;
 			this.speedY = -5;
@@ -364,14 +364,14 @@ public class Megaman extends GCompound {
 			break;
 		case 1: //Damaged
 			if (Direction == 1) {
-				g2.drawImage(DamageLeft.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
+				g2.drawImage(DamageLeft.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY() - 3, null);
 				//g2.dispose();
 				//g2.drawImage(DamageLeft.getImage(), (int)x+1, (int)y, null);
 				//g2.dispose();
 				//g2.drawImage(DamageLeft.getImage(), (int)x+2, (int)y, null);
 			}
 			else {
-				g2.drawImage(DamageRight.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
+				g2.drawImage(DamageRight.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY() - 3, null);
 				//g2.dispose();
 				//g2.drawImage(DamageRight.getImage(), (int)x - (int)gameWorld.camera.getX(), (int)y - (int)gameWorld.camera.getY(), null);
 				//g2.dispose();
@@ -399,13 +399,19 @@ public class Megaman extends GCompound {
 					StartDamageTimer = System.currentTimeMillis();
 					HP = HP - object1.getDamage();
 					if (Direction == 1) {
-						set_X(this.x + 20);
+						//set_X(this.x + 20);
 						speedX = 0;
+						//speedY = 0;
+						resetJump();
+						Jump = 1;
 					}
 					else {
 						if (Direction == 2) {
-							set_X(this.x - 20);
+							//set_X(this.x - 20);
 							speedX = 0;
+							//speedY = 0;
+							resetJump();
+							Jump = 1;
 						}
 					}
 					if (HP == 0) {
@@ -413,10 +419,13 @@ public class Megaman extends GCompound {
 					}
 				}
 			}
-			if (System.currentTimeMillis() - StartDamageTimer > 500)
+			if (System.currentTimeMillis() - StartDamageTimer > 500) {
 				state = 0;
+				Jump = 0;
+			}
 			else {
 				stopRunning();
+				Jump = 1;
 			}
 			break;
 		case 2: //Death
@@ -446,6 +455,7 @@ public class Megaman extends GCompound {
 					Falling = 0;
 					speedY = 0;
 					set_Y((float)r4.getY() - (float)BodyRect.getHeight());
+					jumpTimer = 0;
 				}
 				else {
 					if (System.currentTimeMillis() - jumpTimer > 300) {
@@ -513,6 +523,13 @@ public class Megaman extends GCompound {
 	public void resetJump() {
 		speedY = 5;
 		jumpTimer = System.currentTimeMillis() + 9999;
+		if (gameWorld.physicalMap.haveCollisionWithLand(getDownRect()) != null) {
+			Rectangle r4 = gameWorld.physicalMap.haveCollisionWithLand(getDownRect());
+			Falling = 0;
+			speedY = 0;
+			set_Y((float)r4.getY() - (float)BodyRect.getHeight());
+			jumpTimer = 0;
+		}
 	}
 	public Rectangle getLeftRect() {
 		Rectangle left = LeftRect.toRectangle();

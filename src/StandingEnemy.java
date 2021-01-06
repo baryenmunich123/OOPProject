@@ -42,16 +42,17 @@ public class StandingEnemy extends Enemy {
     public void Attack() {
         // TODO Auto-generated method stub
         Bullet_Enemy bullet = new Bullet_Enemy(getStartX(), getStartY(), getGameWorld());
-        bullet.Update();
+        bullet.setSpeedY(0);
         getGameWorld().Enemy_Manager.addEnemy(bullet);
     }
 
     @Override
     public void draw(Graphics2D g2) {
         // TODO Auto-generated method stub
-        //if (!OutOfView()) {
-            g2.drawImage(image, (int) super.getStartX() - (int)super.getGameWorld().camera.getX() - 20, (int) super.getStartY() - (int)super.getGameWorld().camera.getY() - 50, null);
-        //}
+        // if (!OutOfView()) {
+        g2.drawImage(image, (int) super.getStartX() - (int) super.getGameWorld().camera.getX() - 20,
+                (int) super.getStartY() - (int) super.getGameWorld().camera.getY() - 50, null);
+        // }
     }
 
     @Override
@@ -63,11 +64,11 @@ public class StandingEnemy extends Enemy {
         }
     }
 
-//    public void Update() {
-//        super.updateState();
-//        if (System.nanoTime() - startTimeToShoot > 1000 * 100000000) {
-//            Attack();
-//            startTimeToShoot = System.nanoTime();
-//        }
-//    }
+    // public void Update() {
+    // super.updateState();
+    // if (System.nanoTime() - startTimeToShoot > 1000 * 100000000) {
+    // Attack();
+    // startTimeToShoot = System.nanoTime();
+    // }
+    // }
 }

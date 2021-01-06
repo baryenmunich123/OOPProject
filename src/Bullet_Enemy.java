@@ -45,13 +45,16 @@ public class Bullet_Enemy extends Enemy {
     public void draw(Graphics2D g2) {
         // TODO Auto-generated method stub
         g2.setColor(Color.BLACK);
-        g2.drawOval((int)super.getStartX() - (int)super.getGameWorld().camera.getX(), (int)super.getStartY() - (int)super.getGameWorld().camera.getY(), 10, 10);
-        g2.fillOval((int)super.getStartX() - (int)super.getGameWorld().camera.getX(), (int)super.getStartY() - (int)getGameWorld().camera.getY(), 10, 10);
+        g2.drawOval((int) super.getStartX() - (int) super.getGameWorld().camera.getX(),
+                (int) super.getStartY() - (int) super.getGameWorld().camera.getY(), 10, 10);
+        g2.fillOval((int) super.getStartX() - (int) super.getGameWorld().camera.getX(),
+                (int) super.getStartY() - (int) getGameWorld().camera.getY(), 10, 10);
     }
 
-    public void Update() {
+    @Override
+    public void updateState() {
         // super.updateState();
-        setStartX(getStartX() + getSpeedX());
+        setStartX(getStartX() - getSpeedX());
         setStartY(getStartY() + getSpeedY());
         // getBoundForCollisionWithEnemy().intersects(getGameWorld().megaman.getBodyRect());
         // if (getGameWorld().megaman.getHP() != 0 && getGameWorld().megaman.getState()
@@ -59,16 +62,17 @@ public class Bullet_Enemy extends Enemy {
         // getGameWorld().megaman.setHP(getGameWorld().megaman.getHP() -
         // super.getDamage());
     }
-
-    public boolean OutOfView() {
-        if (super.getStartX() - super.getGameWorld().camera.getX() > (super.getGameWorld().camera.getWidth() + 10)
-                || (super.getStartX() - 20) < super.getGameWorld().camera.getX()
-                || super.getStartY()
-                        - super.getGameWorld().camera.getY() > (super.getGameWorld().camera.getHeight() + 10)
-                || (super.getStartY() - 20) < super.getGameWorld().camera.getY()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    // public boolean OutOfView() {
+    // if (super.getStartX() - super.getGameWorld().camera.getX() >
+    // (super.getGameWorld().camera.getWidth() + 10)
+    // || (super.getStartX() - 20) < super.getGameWorld().camera.getX()
+    // || super.getStartY()
+    // - super.getGameWorld().camera.getY() >
+    // (super.getGameWorld().camera.getHeight() + 10)
+    // || (super.getStartY() - 20) < super.getGameWorld().camera.getY()) {
+    // return true;
+    // } else {
+    // return false;
+    // }
+    // }
 }

@@ -43,7 +43,7 @@ public class GameWorldState {
 		Enemy_Manager.addEnemy(e3);
 		Enemy e4 = new StandingEnemy(5000, 600, this);
 		Enemy_Manager.addEnemy(e4);
-		Enemy e5 = new FlyEnemy(1800,70,this);
+		Enemy e5 = new FlyEnemy(1800,750,this);
 		Enemy_Manager.addEnemy(e5);
 		Enemy e6 = new FlyEnemy(2400,600,this);
 		Enemy_Manager.addEnemy(e6);

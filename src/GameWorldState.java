@@ -81,7 +81,7 @@ public class GameWorldState {
 					state = boss;
 					break;
 				}
-				if (megaman.getHP() == 0) {
+				if (megaman.getHP() <= 0) {
 					state = lose;
 					break;
 				}

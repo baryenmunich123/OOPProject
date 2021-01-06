@@ -7,7 +7,7 @@ import java.util.*;
 public class Bullet_Megaman {
 	private float x;
 	private float y;
-	private int speedX = 6;
+	private int speedX = 10;
 	private int damage = 1;
 	private int state = 1;
 	private GameWorldState gameWorld;

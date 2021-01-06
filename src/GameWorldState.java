@@ -37,20 +37,24 @@ public class GameWorldState {
 	public void initializeEnemy() {
 		Enemy e1 = new StandingEnemy(1100, 482, this);
 		Enemy_Manager.addEnemy(e1);
-		Enemy e2 = new StandingEnemy(1500, 482, this);
+		Enemy e2 = new StandingEnemy(3500, 720, this);
 		Enemy_Manager.addEnemy(e2);
-		Enemy e3 = new StandingEnemy(2840, 630, this);
+		Enemy e3 = new StandingEnemy(2840, 650, this);
 		Enemy_Manager.addEnemy(e3);
 		Enemy e4 = new StandingEnemy(5000, 600, this);
 		Enemy_Manager.addEnemy(e4);
-		Enemy e5 = new FlyEnemy(500,400,this);
+		Enemy e5 = new FlyEnemy(1800,750,this);
 		Enemy_Manager.addEnemy(e5);
-		Enemy e6 = new FlyEnemy(1000,400,this);
+		Enemy e6 = new FlyEnemy(2400,600,this);
 		Enemy_Manager.addEnemy(e6);
-		Enemy e7 = new FlyShootEnemy(300,290,this);
+		Enemy e7 = new FlyShootEnemy(2000,400,this);
 		Enemy_Manager.addEnemy(e7);
-		Enemy e8 = new ShortRangeEnemy(300,482,this);
+		Enemy e8 = new ShortRangeEnemy(1100,300,this);
 		Enemy_Manager.addEnemy(e8);
+		Enemy e9 = new ShortRangeEnemy(3500, 600, this);
+		Enemy_Manager.addEnemy(e9);
+		Enemy e10 = new FlyShootEnemy(2800,400,this);
+		Enemy_Manager.addEnemy(e10);
 	}
 
 	public void Update() {

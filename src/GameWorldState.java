@@ -49,6 +49,8 @@ public class GameWorldState {
 		Enemy_Manager.addEnemy(e6);
 		Enemy e7 = new FlyShootEnemy(300,290,this);
 		Enemy_Manager.addEnemy(e7);
+		Enemy e8 = new ShortRangeEnemy(300,482,this);
+		Enemy_Manager.addEnemy(e8);
 	}
 
 	public void Update() {

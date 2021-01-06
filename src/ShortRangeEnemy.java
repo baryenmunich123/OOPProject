@@ -5,7 +5,9 @@ import java.awt.*;
 
 public class ShortRangeEnemy extends Enemy {
     private Image img;
+
     private int speedX = -3, speedY = 5;
+
     public ShortRangeEnemy(double startX, double startY, GameWorldState gameWorld) {
         super(startX, startY, 50, 50, gameWorld);
         setDamage(3);
@@ -60,6 +62,7 @@ public class ShortRangeEnemy extends Enemy {
 		else {
 				speedY = 7;
 		}
+
     }
     public Rectangle getLeftRect() {
 		Rectangle left = new Rectangle();
@@ -82,3 +85,4 @@ public class ShortRangeEnemy extends Enemy {
 		return up;
 	}
 }
+

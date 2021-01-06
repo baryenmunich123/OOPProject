@@ -43,7 +43,7 @@ public class GameWorldState {
 		Enemy_Manager.addEnemy(e3);
 		Enemy e4 = new StandingEnemy(5000, 600, this);
 		Enemy_Manager.addEnemy(e4);
-		Enemy e5 = new FlyEnemy(1800,750,this);
+		Enemy e5 = new FlyEnemy(1800,70,this);
 		Enemy_Manager.addEnemy(e5);
 		Enemy e6 = new FlyEnemy(2400,600,this);
 		Enemy_Manager.addEnemy(e6);
@@ -53,7 +53,7 @@ public class GameWorldState {
 		Enemy_Manager.addEnemy(e8);
 		Enemy e9 = new ShortRangeEnemy(3500, 600, this);
 		Enemy_Manager.addEnemy(e9);
-		Enemy e10 = new FlyShootEnemy(2800,400,this);
+		Enemy e10 = new FlyShootEnemy(3000,400,this);
 		Enemy_Manager.addEnemy(e10);
 	}
 

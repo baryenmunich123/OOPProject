@@ -10,6 +10,8 @@ import java.awt.*;
 public class FlyEnemy extends Enemy {
     private long startTimeToShoot = 0;
     private Image img;
+    private int speedX = 2;
+    private double leftPosition,rightPosistion;
 
     public FlyEnemy(double startX, double startY, GameWorldState gameWorld) {
         super(startX, startY, 50, 50, gameWorld);
@@ -18,6 +20,16 @@ public class FlyEnemy extends Enemy {
         setHP(3);
         ImageIcon i = new ImageIcon("Image/Enemy2.png");
         img = i.getImage();
+        leftPosition = super.getStartX() - 50;
+        rightPosistion = super.getStartX() + 50;
+    }
+
+    public int getSpeedX() {
+        return speedX;
+    }
+
+    public void setSpeedX(int speedX) {
+        this.speedX = speedX;
     }
 
     @Override
@@ -48,6 +60,11 @@ public class FlyEnemy extends Enemy {
     @Override
     public void updateState() {
         super.updateState();
+        if (super.getStartX() < leftPosition)
+            setSpeedX(2);
+        else if (super.getStartX() > rightPosistion)
+            setSpeedX(-2);
+        setStartX(super.getStartX() + getSpeedX());
         if (System.nanoTime() - startTimeToShoot > 1000 * 10000000) {
             Attack();
             startTimeToShoot = System.nanoTime();

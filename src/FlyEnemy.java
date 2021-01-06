@@ -65,6 +65,7 @@ public class FlyEnemy extends Enemy {
         else if (super.getStartX() == rightPosistion)
             setSpeedX(-5);
         setStartX(super.getStartX() + getSpeedX());
+
         if (System.nanoTime() - startTimeToShoot > 1000 * 10000000) {
             Attack();
             startTimeToShoot = System.nanoTime();

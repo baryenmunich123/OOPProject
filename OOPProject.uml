@@ -4,7 +4,7 @@
     <eAnnotations xmi:id="_dnN-EFDCEeuCfLBIRW0ssA" source="http://ns.yatta.de/umllab">
       <contents xmi:type="ecore:EAnnotation" xmi:id="_dnN-EVDCEeuCfLBIRW0ssA" source="codegen">
         <details xmi:id="_dnN-ElDCEeuCfLBIRW0ssA" key="codegenDirectory" value="/OOPProject"/>
-        <details xmi:id="_d8LhcFDCEeuCfLBIRW0ssA" key="AssociatedSourceCode" value="/OOPProject/src/GameWorldState.java;2077844805/1;/OOPProject/src/GamePanel.java;579931003/1;/OOPProject/src/Main.java;2866160831/1;/OOPProject/src/Megaman.java;4161932151/1;/OOPProject/src/Bullet_Megaman.java;2687744897/1;/OOPProject/src/Bullet_Megaman_Manager.java;70458042/1;/OOPProject/src/Enemy.java;2349688180/1;/OOPProject/src/Boss.java;3156892718/1;/OOPProject/src/Bullet_Enemy.java;1648677556/1;/OOPProject/src/Camera.java;3005612556/1;/OOPProject/src/Enemy_Manager.java;4061472833/1;/OOPProject/src/FlyEnemy.java;3743722033/1;/OOPProject/src/FlyShootEnemy.java;1717568310/1;/OOPProject/src/ShortRangeEnemy.java;1584754930/1;/OOPProject/src/StandingEnemy.java;644168170/1;/OOPProject/src/CacheDataLoader.java;3115485361/1;/OOPProject/src/BackgroundMap.java;1661871368/1;/OOPProject/src/PhysicalMap.java;3844243458/1;"/>
+        <details xmi:id="_d8LhcFDCEeuCfLBIRW0ssA" key="AssociatedSourceCode" value="/OOPProject/src/GameWorldState.java;2077844805/1;/OOPProject/src/GamePanel.java;579931003/1;/OOPProject/src/Main.java;2866160831/1;/OOPProject/src/Megaman.java;4161932151/1;/OOPProject/src/Bullet_Megaman.java;2687744897/1;/OOPProject/src/Bullet_Megaman_Manager.java;70458042/1;/OOPProject/src/Enemy.java;2349688180/1;/OOPProject/src/Boss.java;3156892718/1;/OOPProject/src/Bullet_Enemy.java;1648677556/1;/OOPProject/src/Camera.java;3005612556/1;/OOPProject/src/Enemy_Manager.java;4061472833/1;/OOPProject/src/FlyEnemy.java;3743722033/1;/OOPProject/src/FlyShootEnemy.java;1717568310/1;/OOPProject/src/ShortRangeEnemy.java;1584754930/1;/OOPProject/src/StandingEnemy.java;644168170/1;/OOPProject/src/CacheDataLoader.java;3115485361/1;/OOPProject/src/BackgroundMap.java;1661871368/1;/OOPProject/src/PhysicalMap.java;3844243458/1;/OOPProject/src/FrameImage.java;225082905/1;"/>
       </contents>
     </eAnnotations>
     <elementImport xmi:id="_dltiMFDCEeuCfLBIRW0ssA">
@@ -2801,7 +2801,112 @@
         <ownedOperation xmi:id="_BuOMAVDEEeuCfLBIRW0ssA" name="LoadPhysMap" method="_BvohSFDEEeuCfLBIRW0ssA" raisedException="_ftmbwFDCEeuCfLBIRW0ssA"/>
         <ownedOperation xmi:id="_BuOMAlDEEeuCfLBIRW0ssA" name="LoadFrame" method="_BvohSVDEEeuCfLBIRW0ssA" raisedException="_ftmbwFDCEeuCfLBIRW0ssA"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_BvkP0FDEEeuCfLBIRW0ssA" name="FrameImage"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_BvkP0FDEEeuCfLBIRW0ssA" name="FrameImage">
+        <ownedAttribute xmi:id="_d3W4kFDSEeuUxoXnaLCdzQ" name="name">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_d3YGsFDSEeuUxoXnaLCdzQ" name="image" type="_dpZvYFDCEeuCfLBIRW0ssA" association="_d3kT8FDSEeuUxoXnaLCdzQ"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_d3fbcFDSEeuUxoXnaLCdzQ" name="FrameImage" specification="_d3L5cFDSEeuUxoXnaLCdzQ">
+          <ownedParameter xmi:id="_d3fbcVDSEeuUxoXnaLCdzQ" name="name">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_d3fbclDSEeuUxoXnaLCdzQ" name="image" type="_dpZvYFDCEeuCfLBIRW0ssA"/>
+          <ownedParameter xmi:id="_d3fbc1DSEeuUxoXnaLCdzQ" type="_BvkP0FDEEeuCfLBIRW0ssA" direction="return"/>
+          <language>java</language>
+          <body>this.name = name;&#xD;
+     this.image = image;&#xD;
+ </body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_d3gCgFDSEeuUxoXnaLCdzQ" name="FrameImage" specification="_d3NHkFDSEeuUxoXnaLCdzQ">
+          <ownedParameter xmi:id="_d3gCgVDSEeuUxoXnaLCdzQ" name="frameImage" type="_BvkP0FDEEeuCfLBIRW0ssA"/>
+          <ownedParameter xmi:id="_d3gCglDSEeuUxoXnaLCdzQ" type="_BvkP0FDEEeuCfLBIRW0ssA" direction="return"/>
+          <language>java</language>
+          <body>image = new BufferedImage(frameImage.getWidthImage(), &#xD;
+             frameImage.getHeightImage(), frameImage.image.getType());&#xD;
+     Graphics g = image.getGraphics();&#xD;
+     g.drawImage(frameImage.image, 0, 0, null);&#xD;
+     name = frameImage.name;&#xD;
+ </body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_d3gpkFDSEeuUxoXnaLCdzQ" name="draw" specification="_d3T1QFDSEeuUxoXnaLCdzQ">
+          <ownedParameter xmi:id="_d3gpkVDSEeuUxoXnaLCdzQ" name="x">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_d3gpklDSEeuUxoXnaLCdzQ" name="y">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_d3gpk1DSEeuUxoXnaLCdzQ" name="g2" type="_kzia0FDCEeuCfLBIRW0ssA"/>
+          <language>java</language>
+          <body>g2.drawImage(image, x - image.getWidth()/2, y - image.getHeight()/2, null);&#xD;
+     &#xD;
+ </body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_d3gplFDSEeuUxoXnaLCdzQ" name="FrameImage" specification="_d2O3MFDSEeuUxoXnaLCdzQ">
+          <ownedParameter xmi:id="_d3gplVDSEeuUxoXnaLCdzQ" type="_BvkP0FDEEeuCfLBIRW0ssA" direction="return"/>
+          <language>java</language>
+          <body>this.name = null;&#xD;
+     image = null;&#xD;
+ </body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_d3hQoFDSEeuUxoXnaLCdzQ" name="getWidthImage" specification="_d2hLEFDSEeuUxoXnaLCdzQ">
+          <ownedParameter xmi:id="_d3hQoVDSEeuUxoXnaLCdzQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>return image.getWidth();&#xD;
+ </body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_d3hQolDSEeuUxoXnaLCdzQ" name="getHeightImage" specification="_d2hyIFDSEeuUxoXnaLCdzQ">
+          <ownedParameter xmi:id="_d3hQo1DSEeuUxoXnaLCdzQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>return image.getHeight();&#xD;
+ </body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_d2O3MFDSEeuUxoXnaLCdzQ" name="FrameImage" method="_d3gplFDSEeuUxoXnaLCdzQ">
+          <eAnnotations xmi:id="_d2WL8FDSEeuUxoXnaLCdzQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <details xmi:id="_d2WL8VDSEeuUxoXnaLCdzQ" key="create"/>
+          </eAnnotations>
+          <ownedParameter xmi:id="_d2WL8lDSEeuUxoXnaLCdzQ" type="_BvkP0FDEEeuCfLBIRW0ssA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_d2hLEFDSEeuUxoXnaLCdzQ" name="getWidthImage" method="_d3hQoFDSEeuUxoXnaLCdzQ">
+          <ownedParameter xmi:id="_d2hLEVDSEeuUxoXnaLCdzQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_d2hyIFDSEeuUxoXnaLCdzQ" name="getHeightImage" method="_d3hQolDSEeuUxoXnaLCdzQ">
+          <ownedParameter xmi:id="_d2hyIVDSEeuUxoXnaLCdzQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_d3L5cFDSEeuUxoXnaLCdzQ" name="FrameImage" method="_d3fbcFDSEeuUxoXnaLCdzQ">
+          <eAnnotations xmi:id="_d3MggVDSEeuUxoXnaLCdzQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <details xmi:id="_d3MgglDSEeuUxoXnaLCdzQ" key="create"/>
+          </eAnnotations>
+          <ownedParameter xmi:id="_d3L5cVDSEeuUxoXnaLCdzQ" name="name">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_d3MggFDSEeuUxoXnaLCdzQ" name="image" type="_dpZvYFDCEeuCfLBIRW0ssA"/>
+          <ownedParameter xmi:id="_d3Mgg1DSEeuUxoXnaLCdzQ" type="_BvkP0FDEEeuCfLBIRW0ssA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_d3NHkFDSEeuUxoXnaLCdzQ" name="FrameImage" method="_d3gCgFDSEeuUxoXnaLCdzQ">
+          <eAnnotations xmi:id="_d3SnIFDSEeuUxoXnaLCdzQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <details xmi:id="_d3TOMFDSEeuUxoXnaLCdzQ" key="create"/>
+          </eAnnotations>
+          <ownedParameter xmi:id="_d3SAEFDSEeuUxoXnaLCdzQ" name="frameImage" type="_BvkP0FDEEeuCfLBIRW0ssA"/>
+          <ownedParameter xmi:id="_d3TOMVDSEeuUxoXnaLCdzQ" type="_BvkP0FDEEeuCfLBIRW0ssA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_d3T1QFDSEeuUxoXnaLCdzQ" name="draw" method="_d3gpkFDSEeuUxoXnaLCdzQ">
+          <ownedParameter xmi:id="_d3T1QVDSEeuUxoXnaLCdzQ" name="x">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_d3T1QlDSEeuUxoXnaLCdzQ" name="y">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_d3T1Q1DSEeuUxoXnaLCdzQ" name="g2" type="_kzia0FDCEeuCfLBIRW0ssA"/>
+        </ownedOperation>
+      </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_BvpIUFDEEeuCfLBIRW0ssA" name="" memberEnd="_BvpIUVDEEeuCfLBIRW0ssA _Bvld8FDEEeuCfLBIRW0ssA">
         <ownedEnd xmi:id="_BvpIUVDEEeuCfLBIRW0ssA" name="" type="_BuLvwFDEEeuCfLBIRW0ssA" association="_BvpIUFDEEeuCfLBIRW0ssA"/>
       </packagedElement>
@@ -2813,6 +2918,9 @@
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_NR2AMFDEEeuCfLBIRW0ssA" name="" memberEnd="_NR2AMVDEEeuCfLBIRW0ssA _NRy84FDEEeuCfLBIRW0ssA">
         <ownedEnd xmi:id="_NR2AMVDEEeuCfLBIRW0ssA" name="" type="_dphEIFDCEeuCfLBIRW0ssA" association="_NR2AMFDEEeuCfLBIRW0ssA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_d3kT8FDSEeuUxoXnaLCdzQ" name="" memberEnd="_d3YGsFDSEeuUxoXnaLCdzQ _d3nXQFDSEeuUxoXnaLCdzQ">
+        <ownedEnd xmi:id="_d3nXQFDSEeuUxoXnaLCdzQ" name="" type="_BvkP0FDEEeuCfLBIRW0ssA" association="_d3kT8FDSEeuUxoXnaLCdzQ"/>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_kxArQFDCEeuCfLBIRW0ssA" name="acm">
@@ -3162,7 +3270,6 @@
   <UMLLabProfile:Reference xmi:id="_Bvc7EFDEEeuCfLBIRW0ssA" base_Element="_BvcUAVDEEeuCfLBIRW0ssA"/>
   <UMLLabProfile:Reference xmi:id="_Bvc7ElDEEeuCfLBIRW0ssA" base_Element="_Bvc7EVDEEeuCfLBIRW0ssA"/>
   <UMLLabProfile:Reference xmi:id="_BvdiIVDEEeuCfLBIRW0ssA" base_Element="_BvdiIFDEEeuCfLBIRW0ssA"/>
-  <UMLLabProfile:Reference xmi:id="_Bvk24FDEEeuCfLBIRW0ssA" base_Element="_BvkP0FDEEeuCfLBIRW0ssA"/>
   <UMLLabProfile:LegacyStyledElement xmi:id="_BvmFAFDEEeuCfLBIRW0ssA" base_Element="_Bvld8FDEEeuCfLBIRW0ssA">
     <associatedElement xmi:type="uml:Operation" xmi:id="_BvmFAlDEEeuCfLBIRW0ssA" name="getInstance" isStatic="true" method="_Bvn6MFDEEeuCfLBIRW0ssA">
       <ownedParameter xmi:id="_BvmFA1DEEeuCfLBIRW0ssA" type="_BuLvwFDEEeuCfLBIRW0ssA" direction="return"/>

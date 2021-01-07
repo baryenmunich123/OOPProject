@@ -25,7 +25,7 @@ public class GameWorldState {
 
 	public GameWorldState() {
 		bufferedImage = new BufferedImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT, BufferedImage.TYPE_INT_ARGB);
-		megaman = new Megaman(9600, 443, this); // 200, 443 starting position
+		megaman = new Megaman(11000, 443, this); // 200, 443 starting position
 		physicalMap = new PhysicalMap(0, 0, this);
 		backgroundMap = new BackgroundMap(0, 0, this);
 		camera = new Camera(0, 0, Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT, this);
@@ -119,7 +119,7 @@ public class GameWorldState {
 		Enemy_Manager.addEnemy(e39);
 		Enemy e40 = new StandingEnemy(11000, 780, this);
 		Enemy_Manager.addEnemy(e40);
-		Enemy boss = new Boss(11500, 680, this);
+		Enemy boss = new Boss(11700, 680, this);
 		Enemy_Manager.addEnemy(boss);
 		
 	}

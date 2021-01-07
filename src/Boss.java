@@ -13,7 +13,7 @@ public class Boss extends Enemy {
     private Image img;
     public Boss(double startX, double startY, GameWorldState gameWorld) {
         super(startX, startY, 50, 50, gameWorld);
-        setDamage(5);
+        setDamage(4);
         setHP(20);
         ImageIcon i = new ImageIcon("Image/Boss.png");
         img = i.getImage();
@@ -48,41 +48,49 @@ public class Boss extends Enemy {
         Bullet_Enemy bulletLeft = new Bullet_Enemy(super.getStartX(), super.getStartY(), super.getGameWorld());
         bulletLeft.setSpeedX(bulletLeft.getSpeedX());
         bulletLeft.setSpeedY(0);
+        bulletLeft.setDamage(2);
         super.getGameWorld().Enemy_Manager.addEnemy(bulletLeft);
 
         Bullet_Enemy bulletRight = new Bullet_Enemy(super.getStartX(), super.getStartY(), super.getGameWorld());
         bulletRight.setSpeedX(-bulletRight.getSpeedX());
         bulletRight.setSpeedY(0);
+        bulletRight.setDamage(2);
         super.getGameWorld().Enemy_Manager.addEnemy(bulletRight);
 
         Bullet_Enemy bulletUp = new Bullet_Enemy(super.getStartX(), super.getStartY(), super.getGameWorld());
         bulletUp.setSpeedY(-bulletUp.getSpeedY());
         bulletUp.setSpeedX(0);
+        bulletUp.setDamage(2);
         super.getGameWorld().Enemy_Manager.addEnemy(bulletUp);
 
         Bullet_Enemy bulletUpLeft = new Bullet_Enemy(super.getStartX(), super.getStartY(), super.getGameWorld());
         bulletUpLeft.setSpeedY(-bulletUpLeft.getSpeedY() / 2);
         bulletUpLeft.setSpeedX(bulletUpLeft.getSpeedX() / 2);
+        bulletUpLeft.setDamage(2);
         super.getGameWorld().Enemy_Manager.addEnemy(bulletUpLeft);
 
         Bullet_Enemy bulletUpRight = new Bullet_Enemy(super.getStartX(), super.getStartY(), super.getGameWorld());
         bulletUpRight.setSpeedY(-bulletUpRight.getSpeedY() / 2);
         bulletUpRight.setSpeedX(-bulletUpRight.getSpeedX() / 2);
+        bulletUpRight.setDamage(2);
         super.getGameWorld().Enemy_Manager.addEnemy(bulletUpRight);
 
         Bullet_Enemy bulletDown = new Bullet_Enemy(super.getStartX(), super.getStartY(), super.getGameWorld());
         bulletDown.setSpeedY(+bulletDown.getSpeedY());
         bulletDown.setSpeedX(0);
+        bulletDown.setDamage(2);
         super.getGameWorld().Enemy_Manager.addEnemy(bulletDown);
 
         Bullet_Enemy bulletDownLeft = new Bullet_Enemy(super.getStartX(), super.getStartY(), super.getGameWorld());
         bulletDownLeft.setSpeedY(bulletDownLeft.getSpeedY() / 2);
         bulletDownLeft.setSpeedX(bulletDownLeft.getSpeedX() / 2);
+        bulletDownLeft.setDamage(2);
         super.getGameWorld().Enemy_Manager.addEnemy(bulletDownLeft);
 
         Bullet_Enemy bulletDownRight = new Bullet_Enemy(super.getStartX(), super.getStartY(), super.getGameWorld());
         bulletDownRight.setSpeedY(bulletDownRight.getSpeedY() / 2);
         bulletDownRight.setSpeedX(-bulletDownRight.getSpeedX() / 2);
+        bulletDownRight.setDamage(2);
         super.getGameWorld().Enemy_Manager.addEnemy(bulletDownRight);
     }
 
@@ -113,9 +121,9 @@ public class Boss extends Enemy {
         }
         setStartX(super.getStartX() + getSpeedX());
 
-        if (System.nanoTime() - startTimeToShoot > 1000 * 10000000 * 1.5) {
-            Attack();
-            startTimeToShoot = System.nanoTime();
-        }
+        //if (System.nanoTime() - startTimeToShoot > 1000 * 10000000 * 1.5) {
+            //Attack();
+            //startTimeToShoot = System.nanoTime();
+        //}
     }
 }

@@ -69,7 +69,7 @@ public class GameWorldState {
 //		Enemy_Manager.addEnemy(e16);
 //		Enemy e17= new StandingEnemy(4500, 482, this);
 //		Enemy_Manager.addEnemy(e17);
-		Enemy boss = new Boss(400,400,this);
+		Enemy boss = new Boss(400,430,this);
 		Enemy_Manager.addEnemy(boss);
 	}
 

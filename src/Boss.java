@@ -5,9 +5,10 @@ import java.awt.*;
 import java.awt.Graphics2D;
 
 public class Boss extends Enemy {
-    private int speedX = 5;
-    private int speedY = 5;
+    private int speedX = 10;
+    private int speedY = 10;
     private long startTimeToShoot = 0;
+    private long timeToStop = 0;
     private double leftPosition,rightPosistion;
     private Image img;
     public Boss(double startX, double startY, GameWorldState gameWorld) {
@@ -16,8 +17,8 @@ public class Boss extends Enemy {
         setHP(10);
         ImageIcon i = new ImageIcon("Image/Enemy4.png");
         img = i.getImage();
-        leftPosition = super.getStartX() - 150;
-        rightPosistion = super.getStartX() + 150;
+        leftPosition = super.getStartX() - 200;
+        rightPosistion = super.getStartX() + 200;
     }
 
     public int getSpeedX() {
@@ -94,15 +95,27 @@ public class Boss extends Enemy {
     @Override
     public void updateState() {
         super.updateState();
-        if (super.getStartX() == leftPosition)
-            setSpeedX(5);
-        else if (super.getStartX() == rightPosistion)
-            setSpeedX(-5);
+        if (super.getStartX() == leftPosition) {
+            setSpeedX(0);
+            Attack();
+            if (System.currentTimeMillis() - timeToStop > 300) {
+                setSpeedX(5);
+                timeToStop = System.currentTimeMillis();
+            }
+        }
+        else if (super.getStartX() == rightPosistion) {
+            setSpeedX(0);
+            Attack();
+            if (System.currentTimeMillis() - timeToStop > 300) {
+                setSpeedX(-5);
+                timeToStop = System.currentTimeMillis();
+            }
+        }
         setStartX(super.getStartX() + getSpeedX());
 
-        if (System.nanoTime() - startTimeToShoot > 1000 * 10000000 * 1.5) {
-            Attack();
-            startTimeToShoot = System.nanoTime();
-        }
+//        if (System.nanoTime() - startTimeToShoot > 1000 * 10000000 * 1.5) {
+//            Attack();
+//            startTimeToShoot = System.nanoTime();
+//        }
     }
 }

@@ -10,6 +10,7 @@ public class GameWorldState {
 	private BufferedImage bufferedImage;
 	private int state = 1;
 	private int bossfight = 1;
+	private Enemy bossEnemy;
 
 	public static final int game = 1;
 	public static final int boss = 2;
@@ -25,12 +26,14 @@ public class GameWorldState {
 
 	public GameWorldState() {
 		bufferedImage = new BufferedImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT, BufferedImage.TYPE_INT_ARGB);
-		megaman = new Megaman(11000, 443, this); // 200, 443 starting position
+		megaman = new Megaman(200, 443, this); // 200, 443 starting position
 		physicalMap = new PhysicalMap(0, 0, this);
 		backgroundMap = new BackgroundMap(0, 0, this);
 		camera = new Camera(0, 0, Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT, this);
 		Bullet_Megaman_Manager = new Bullet_Megaman_Manager(this);
 		Enemy_Manager = new Enemy_Manager(this);
+		bossEnemy = new Boss(11700, 680, this);
+		Enemy_Manager.addEnemy(bossEnemy);
 		initializeEnemy();
 	}
 
@@ -119,8 +122,8 @@ public class GameWorldState {
 		Enemy_Manager.addEnemy(e39);
 		Enemy e40 = new StandingEnemy(11000, 780, this);
 		Enemy_Manager.addEnemy(e40);
-		Enemy boss = new Boss(11700, 680, this);
-		Enemy_Manager.addEnemy(boss);
+		//bossEnemy = new Boss(11700, 680, this);
+		//Enemy_Manager.addEnemy(bossEnemy);
 		
 	}
 
@@ -140,7 +143,7 @@ public class GameWorldState {
 					state = lose;
 					break;
 				}
-				if (Enemy_Manager.getSize() == 0) {
+				if (bossEnemy.getHP() <= 0) {
 					state = win;
 					break;
 				}

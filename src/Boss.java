@@ -106,7 +106,7 @@ public class Boss extends Enemy {
         if (super.getStartX() == leftPosition) {
             setSpeedX(0);
             Attack();
-            if (System.currentTimeMillis() - timeToStop > 800) {
+            if (System.currentTimeMillis() - timeToStop > 1000) {
                 setSpeedX(5);
                 timeToStop = System.currentTimeMillis();
             }
@@ -114,16 +114,16 @@ public class Boss extends Enemy {
         else if (super.getStartX() == rightPosistion) {
             setSpeedX(0);
             Attack();
-            if (System.currentTimeMillis() - timeToStop > 800) {
+            if (System.currentTimeMillis() - timeToStop > 1000) {
                 setSpeedX(-5);
                 timeToStop = System.currentTimeMillis();
             }
         }
         setStartX(super.getStartX() + getSpeedX());
 
-        //if (System.nanoTime() - startTimeToShoot > 1000 * 10000000 * 1.5) {
-            //Attack();
-            //startTimeToShoot = System.nanoTime();
-        //}
+        if (System.nanoTime() - startTimeToShoot > 1000 * 10000000 * 1.5 * 2) {
+            Attack();
+            startTimeToShoot = System.nanoTime();
+        }
     }
 }

@@ -15,7 +15,7 @@ public class Boss extends Enemy {
         super(startX, startY, 50, 50, gameWorld);
         setDamage(5);
         setHP(10);
-        ImageIcon i = new ImageIcon("Image/Enemy4.png");
+        ImageIcon i = new ImageIcon("Image/Boss.png");
         img = i.getImage();
         leftPosition = super.getStartX() - 200;
         rightPosistion = super.getStartX() + 200;
@@ -113,9 +113,9 @@ public class Boss extends Enemy {
         }
         setStartX(super.getStartX() + getSpeedX());
 
-//        if (System.nanoTime() - startTimeToShoot > 1000 * 10000000 * 1.5) {
-//            Attack();
-//            startTimeToShoot = System.nanoTime();
-//        }
+        if (System.nanoTime() - startTimeToShoot > 1000 * 10000000 * 1.5) {
+            Attack();
+            startTimeToShoot = System.nanoTime();
+        }
     }
 }

@@ -14,7 +14,7 @@ public class Boss extends Enemy {
     public Boss(double startX, double startY, GameWorldState gameWorld) {
         super(startX, startY, 50, 50, gameWorld);
         setDamage(5);
-        setHP(10);
+        setHP(20);
         ImageIcon i = new ImageIcon("Image/Boss.png");
         img = i.getImage();
         leftPosition = super.getStartX() - 200;
@@ -98,7 +98,7 @@ public class Boss extends Enemy {
         if (super.getStartX() == leftPosition) {
             setSpeedX(0);
             Attack();
-            if (System.currentTimeMillis() - timeToStop > 300) {
+            if (System.currentTimeMillis() - timeToStop > 800) {
                 setSpeedX(5);
                 timeToStop = System.currentTimeMillis();
             }
@@ -106,7 +106,7 @@ public class Boss extends Enemy {
         else if (super.getStartX() == rightPosistion) {
             setSpeedX(0);
             Attack();
-            if (System.currentTimeMillis() - timeToStop > 300) {
+            if (System.currentTimeMillis() - timeToStop > 800) {
                 setSpeedX(-5);
                 timeToStop = System.currentTimeMillis();
             }

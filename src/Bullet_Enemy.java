@@ -3,8 +3,8 @@ package src;
 import java.awt.*;
 
 public class Bullet_Enemy extends Enemy {
-    private int speedX = 5;
-    private int speedY = 5;
+    private int speedX = 4;
+    private int speedY = 4;
 
     public Bullet_Enemy(double startX, double startY, GameWorldState gameWorld) {
         super(startX, startY, 20, 20, gameWorld);

@@ -77,7 +77,7 @@ public class ShortRangeEnemy extends Enemy {
 	}
 	public Rectangle getDownRect() {
 		Rectangle down = new Rectangle();
-		down.setBounds((int)super.getStartX() + 1, (int)super.getStartY() + (int)super.getHeight() -1, (int)super.getWidth() - 2, 3);
+		down.setBounds((int)super.getStartX() + 1, (int)super.getStartY() + (int)super.getHeight() -1, (int)super.getWidth() - 2, 4);
 		return down;
 	}
 	public Rectangle getUpRect() {

@@ -60,28 +60,28 @@ public class Boss extends Enemy {
         super.getGameWorld().Enemy_Manager.addEnemy(bulletUp);
 
         Bullet_Enemy bulletUpLeft = new Bullet_Enemy(super.getStartX(), super.getStartY(), super.getGameWorld());
-        bulletUpLeft.setSpeedY(-bulletUpLeft.getSpeedY());
-        bulletUpLeft.setSpeedX(bulletUpLeft.getSpeedX());
+        bulletUpLeft.setSpeedY(-bulletUpLeft.getSpeedY() / 2);
+        bulletUpLeft.setSpeedX(bulletUpLeft.getSpeedX() / 2);
         super.getGameWorld().Enemy_Manager.addEnemy(bulletUpLeft);
 
         Bullet_Enemy bulletUpRight = new Bullet_Enemy(super.getStartX(), super.getStartY(), super.getGameWorld());
-        bulletUpRight.setSpeedY(-bulletUpLeft.getSpeedY());
-        bulletUpRight.setSpeedX(-bulletUpLeft.getSpeedX());
+        bulletUpRight.setSpeedY(-bulletUpRight.getSpeedY() / 2);
+        bulletUpRight.setSpeedX(-bulletUpRight.getSpeedX() / 2);
         super.getGameWorld().Enemy_Manager.addEnemy(bulletUpRight);
 
         Bullet_Enemy bulletDown = new Bullet_Enemy(super.getStartX(), super.getStartY(), super.getGameWorld());
-        bulletDown.setSpeedY(bulletUpLeft.getSpeedY());
+        bulletDown.setSpeedY(+bulletDown.getSpeedY());
         bulletDown.setSpeedX(0);
         super.getGameWorld().Enemy_Manager.addEnemy(bulletDown);
 
         Bullet_Enemy bulletDownLeft = new Bullet_Enemy(super.getStartX(), super.getStartY(), super.getGameWorld());
-        bulletDownLeft.setSpeedY(bulletDownLeft.getSpeedY());
-        bulletDownLeft.setSpeedX(bulletDownLeft.getSpeedX());
+        bulletDownLeft.setSpeedY(bulletDownLeft.getSpeedY() / 2);
+        bulletDownLeft.setSpeedX(bulletDownLeft.getSpeedX() / 2);
         super.getGameWorld().Enemy_Manager.addEnemy(bulletDownLeft);
 
         Bullet_Enemy bulletDownRight = new Bullet_Enemy(super.getStartX(), super.getStartY(), super.getGameWorld());
-        bulletDownRight.setSpeedY(bulletDownLeft.getSpeedY());
-        bulletDownRight.setSpeedX(-bulletDownRight.getSpeedX());
+        bulletDownRight.setSpeedY(bulletDownRight.getSpeedY() / 2);
+        bulletDownRight.setSpeedX(-bulletDownRight.getSpeedX() / 2);
         super.getGameWorld().Enemy_Manager.addEnemy(bulletDownRight);
     }
 
@@ -100,7 +100,7 @@ public class Boss extends Enemy {
             setSpeedX(-5);
         setStartX(super.getStartX() + getSpeedX());
 
-        if (System.nanoTime() - startTimeToShoot > 1000 * 10000000) {
+        if (System.nanoTime() - startTimeToShoot > 1000 * 10000000 * 1.5) {
             Attack();
             startTimeToShoot = System.nanoTime();
         }

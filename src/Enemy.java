@@ -168,7 +168,9 @@ public abstract class Enemy {
     }
 
     public void damagedUpdate() {
-    };
+    	
+    }
+    
 
     public abstract Rectangle getBoundForCollisionWithEnemy();
 

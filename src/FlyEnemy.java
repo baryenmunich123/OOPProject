@@ -54,7 +54,7 @@ public class FlyEnemy extends Enemy {
         // TODO Auto-generated method stub
         g2.drawImage(img, (int) super.getStartX() - (int) super.getGameWorld().camera.getX() - 45,
                 (int) super.getStartY() - (int) super.getGameWorld().camera.getY() - 50, null);
-        drawBoundForCollisionWithEnemy(g2);
+//        drawBoundForCollisionWithEnemy(g2);
     }
 
     @Override

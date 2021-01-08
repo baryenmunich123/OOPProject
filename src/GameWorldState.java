@@ -32,7 +32,7 @@ public class GameWorldState {
 		camera = new Camera(0, 0, Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT, this);
 		Bullet_Megaman_Manager = new Bullet_Megaman_Manager(this);
 		Enemy_Manager = new Enemy_Manager(this);
-		bossEnemy = new Boss(11700, 680, this);
+		bossEnemy = new Boss(11700, 690, this);
 		Enemy_Manager.addEnemy(bossEnemy);
 		initializeEnemy();
 	}

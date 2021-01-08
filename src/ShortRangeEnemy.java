@@ -31,7 +31,7 @@ public class ShortRangeEnemy extends Enemy {
     public void draw(Graphics2D g2) {
         g2.drawImage(img, (int) super.getStartX() - (int) super.getGameWorld().camera.getX() - 45,
                 (int) super.getStartY() - (int) super.getGameWorld().camera.getY() - 50 + 5, null);
-        drawBoundForCollisionWithEnemy(g2);
+//        drawBoundForCollisionWithEnemy(g2);
     }
 
     @Override
